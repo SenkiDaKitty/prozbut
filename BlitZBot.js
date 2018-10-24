@@ -7,7 +7,7 @@ client.on("ready", function () {
     console.log("BlitZ Bot - Electrisant !");
 });
 client.on('message', message => {
-    var args = message.content.split(' ');
+    var args = message.content.substring(prefix.length).split(" ");
     if (message.content.startsWith(prefix + "setgame")) {
         if (message.member.id != '183549541470044161') {
             return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
@@ -91,7 +91,7 @@ if (message.content === prefix + "ping"){
 });
 client.on('message', message => {
 
-const args = message.content.slice(prefix.length).split(/ +/);
+const args = message.content.substring(prefix.length).split(" ");
     if (message.content.startsWith(prefix + "ban")) {
         if (!message.member.permissions.has('BAN_MEMBERS')) {
             var BanEmbed = new Discord.RichEmbed()
