@@ -1,9 +1,7 @@
 const Discord = require("discord.js");
 const botsettings = require("./botsettings.json");
-const YTDL = require("ytdl-core");
 var client = new Discord.Client();
 var prefix = "B!";
-const queue = new Map();
 
 client.on("ready", function () {
     console.log("BlitZ Bot - Electrisant !");
