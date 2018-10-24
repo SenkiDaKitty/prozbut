@@ -12,7 +12,7 @@ client.on('message', message => {
         if (message.member.id != '183549541470044161') {
             return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
         } else {
-    let game = args.slice.apply(1).join(' ');
+        var game = arguments[0];
     message.channel.sendMessage(`Description mis à jour : ${game}`)
     client.user.setActivity(game)
         }
