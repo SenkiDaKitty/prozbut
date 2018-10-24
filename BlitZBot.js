@@ -7,12 +7,12 @@ client.on("ready", function () {
     console.log("BlitZ Bot - Electrisant !");
 });
 client.on('message', message => {
-    var args = message.content.substring(prefix.length).split(" ");
     if (message.content.startsWith(prefix + "setgame")) {
         if (message.member.id != '183549541470044161') {
             return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
         } else {
-        var game = arguments[0];
+        var args = message.content.substring(prefix.length).split(" ");
+        var game = args[0];
     message.channel.sendMessage(`Description mis à jour : ${game}`)
     client.user.setActivity(game)
         }
