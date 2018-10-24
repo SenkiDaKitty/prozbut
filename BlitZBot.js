@@ -13,7 +13,6 @@ client.on('message', message => {
             return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
         } else {
     let game = args.slice.apply(1).join(' ');
-    if(!game) game = "BlitzBot - Alpha"
     message.channel.sendMessage(`Description mis à jour : ${game}`)
     client.user.setActivity(game)
         }
