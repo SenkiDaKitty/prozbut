@@ -96,6 +96,7 @@ client.on('message', message => {
 		.setDescription(`⚡📝 | ` + args.join(" "));
 		message.channel.send({embed})
     }
+});
 client.on('message', message => {
     if (message.content.startsWith(prefix + "ban")) {
         if (!message.member.permissions.has('BAN_MEMBERS')) {
