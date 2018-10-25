@@ -90,11 +90,12 @@ if (message.content === prefix + "ping"){
 });
 client.on('message', message => {
         var args = message.content.substring(prefix.length).split(" ");
+	var say = args.slice(1).join(' '));
 	if (message.content === prefix + "say"){
 		message.delete()
         var embedSay = new Discord.RichEmbed()
 		.setColor(0xff4c4c)
-		.setDescription(`⚡📝 | ` + args.slice(1).join(' '));
+		.setDescription(`⚡📝 | ${say} `)
 		message.channel.send(embedSay)
     }
 });
