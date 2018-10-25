@@ -65,7 +65,7 @@ if (message.content === prefix + "sinfo") {
       var ServerInfoEmbed = new Discord.RichEmbed()
         .setAuthor(`${message.guild.name} - Informations`, message.guild.iconURL) 
         .setColor('#f4df42') 
-        .addField('Adminsitrateur du Serveur :', message.guild.owner, true) 
+        .addField('Administrateur du Serveur :', message.guild.owner, true) 
         .addField('Nombres de channels :', message.guild.channels.size, true) 
         .addField(`Nombres De Membres :`, message.guild.memberCount) 
         .addField('Nombres de Membres Humains :', checkMembers(message.guild), true)
