@@ -89,7 +89,14 @@ if (message.content === prefix + "ping"){
 }
 });
 client.on('message', message => {
-
+	if (command === "say") {
+		message.delete()
+        const embed = new Discord.RichEmbed()
+		.setColor(0x954D23)
+		.setDescription(`⚡📝 | ` + args.join(" "));
+		message.channel.send({embed})
+    }
+client.on('message', message => {
     if (message.content.startsWith(prefix + "ban")) {
         if (!message.member.permissions.has('BAN_MEMBERS')) {
             var BanEmbed = new Discord.RichEmbed()
