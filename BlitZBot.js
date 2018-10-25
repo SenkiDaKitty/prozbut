@@ -153,7 +153,7 @@ client.on('message', message => {
             var MuteEmbed = new Discord.RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setTitle("Sanctions >> Mute >> Permissions Insuffisantes | Les instructions ont été envoyé en MP")
-            .setColor(0xff4c4c)
+            .setColor("0xff4c4c")
             .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
             message.author.sendMessage("```Soies sur que : \n Le Bot ai assez de permissions.\n Que vous ayez entrez un utilisateur à bannir.\n Que VOUS avez assez de permissions.\n D'avoir entrer une raison.```")
             message.delete()
