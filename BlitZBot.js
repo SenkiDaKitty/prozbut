@@ -88,8 +88,8 @@ if (message.content === prefix + "ping"){
     message.channel.send(embed);
 }
 });
-var args = message.content.substring(prefix.length).split(" ");
 client.on('message', message => {
+var args = message.content.substring(prefix.length).split(" ");
 	if (message.content === prefix + "say"){
 		message.delete()
         const embedSay = new Discord.RichEmbed()
