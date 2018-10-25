@@ -93,8 +93,8 @@ var args = message.content.substring(prefix.length).split(" ");
 	if (message.content === prefix + "say"){
 		message.delete()
         const embedSay = new Discord.RichEmbed()
-		.setColor(0x954D23)
-		.setDescription(`⚡📝 | ` + args.join(" "));
+		.setColor(0xff4c4c)
+		.setDescription(`⚡📝 | ` + args.slice(1).join(' '));
 		message.channel.send(embedSay)
     }
 });
