@@ -90,7 +90,7 @@ if (message.content === prefix + "ping"){
 });
 client.on('message', message => {
 	var args = message.content.substring(prefix.length).split(" ");
-        let say = args.slice(1).join(' ')   
+        let say = args.slice(2).join(' ')
 	if (message.content === prefix + "say"){
         var embedSay = new Discord.RichEmbed()
 		.setColor(0xff4c4c)
