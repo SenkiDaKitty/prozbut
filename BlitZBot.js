@@ -12,7 +12,7 @@ client.on('message', message => {
             return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
         } else {
         var args = message.content.substring(prefix.length).split(" ");
-        let game = args.slice(2).join(' ')   
+        let game = args.slice(1).join(' ')   
     message.channel.sendMessage(`Description mis à jour : ${game}`)
     client.user.setActivity(game)
         }
