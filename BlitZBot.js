@@ -126,7 +126,7 @@ client.on('message', message => {
                 return
         } else {
             var args = message.content.substring(prefix.length).split(" ");
-            let reason = args[1];            
+            let reason = args.slice(2).join(' ')            
             if(!reason) reason = "Aucune Raison n'a été fournie, désolé (ツ)"
 
         member.ban(reason)
@@ -138,7 +138,7 @@ client.on('message', message => {
           .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473"))
         var BanLogEmbed = new Discord.RichEmbed()
           .setAuthor(message.author.username, message.author.avatarURL)
-          .addField(`Sanctions Appliquée( Ban )`,`L'utilisateur ${message.mentions.users.first} à été banni par ${message.author.tag} Raison :`, reason)
+          .addField(`Sanctions Appliquée( Ban )`,`L'utilisateur ${message.mentions.users.first} à été banni par ${message.author.tag} Raison : ${reason}`)
           .setColor("0x02e427")
           .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
           const logs = message.guild.channels.find(channel => channel.name === "logs");
@@ -189,7 +189,7 @@ client.on('message', message => {
                     }
                 }
                 var args = message.content.substring(prefix.length).split(" ");
-                let mutereason = args[1];  
+                let mutereason = args.slice(2).join(' ')
                 const memberToMute = message.guild.member(userToMute) || message.guild.fetchMember(userToMute);
                 memberToMute.addRole(role);
                 var MuteEmbed = new Discord.RichEmbed()
