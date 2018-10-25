@@ -94,7 +94,7 @@ var args = message.content.substring(prefix.length).split(" ");
 		message.delete()
         const embedSay = new Discord.RichEmbed()
 		.setColor(0xff4c4c)
-		.setDescription(`⚡📝 | ` + args.slice(1).join(' '));
+		.setDescription(`⚡📝 | ` + args.slice(2).join(' '));
 		message.channel.send(embedSay)
     }
 });
