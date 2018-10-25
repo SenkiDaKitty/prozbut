@@ -194,14 +194,14 @@ client.on('message', message => {
                 memberToMute.addRole(role);
                 var MuteEmbed = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
-                .addField(`La Sanction a été appliquée. !`,`L'utilisateur ${message.mentions.users.first()} à été réduit au silence par ${message.author.tag}, Raison :`, mutereason)
+                .addField(`La Sanction a été appliquée. !`,`L'utilisateur ${message.mentions.users.first()} à été réduit au silence par ${message.author.tag}, Raison : ${mutereason}`)
                 .setColor("0x02e427")
                 .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                 message.delete()
                 message.channel.send(MuteEmbed); 
                 var MuteLogEmbed = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
-                .addField(`Sanctions Appliquée ( Mute )`,`L'utilisateur ${message.mentions.users.first()} à été mute par ${message.author.tag}, raison : `, mutereason)
+                .addField(`Sanctions Appliquée ( Mute )`,`L'utilisateur ${message.mentions.users.first()} à été mute par ${message.author.tag}, raison : ${mutereason}`)
                 .setColor("0x02e427")
                 .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                 const logs = message.guild.channels.find(channel => channel.name === "logs");
