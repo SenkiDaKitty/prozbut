@@ -90,7 +90,6 @@ if (message.content === prefix + "ping"){
 });
 client.on('message', message => {
 
-    var args = message.content.substring(prefix.length).split(" ");
     if (message.content.startsWith(prefix + "ban")) {
         if (!message.member.permissions.has('BAN_MEMBERS')) {
             var BanEmbed = new Discord.RichEmbed()
@@ -126,6 +125,7 @@ client.on('message', message => {
                 message.channel.send(EmbedBan).catch((error) => { console.log(error.message) });
                 return
         } else {
+            var args = message.content.substring(prefix.length).split(" ");
             let reason = args[1];            
             if(!reason) reason = "Aucune Raison n'a été fournie, désolé (ツ)"
 
