@@ -126,7 +126,8 @@ const args = message.content.substring(prefix.length).split(" ");
                 message.channel.send(EmbedBan).catch((error) => { console.log(error.message) });
                 return
         } else {
-            let reason = args.slice(1).join(' ');             
+            var args = message.content.substring(prefix.length).split(" ");
+            let reason = args[1];            
             if(!reason) reason = "Aucune Raison n'a été fournie, désolé (ツ)"
 
         member.ban(reason)
@@ -188,6 +189,8 @@ const args = message.content.substring(prefix.length).split(" ");
                         console.log(e.stack);
                     }
                 }
+                var args = message.content.substring(prefix.length).split(" ");
+                let mutereason = args[1];  
                 const memberToMute = message.guild.member(userToMute) || message.guild.fetchMember(userToMute);
                 memberToMute.addRole(role);
                 var MuteEmbed = new Discord.RichEmbed()
