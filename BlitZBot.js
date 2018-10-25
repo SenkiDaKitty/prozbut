@@ -89,7 +89,7 @@ if (message.content === prefix + "ping"){
 }
 });
 client.on('message', message => {
-	var args = message.content.split(' ');
+        var args = message.content.substring(prefix.length).split(" ");
     let say = args.slice(1).join(' ');
     if(!say) return message.channel.sendMessage("Veuillez écrire un message")
 	if (message.content === prefix + "say"){
