@@ -94,7 +94,7 @@ var args = message.content.substring(prefix.length).split(" ");
     let say = args.slice(1).join(' ');
         var embedSay = new Discord.RichEmbed()
 		.setColor(0xff4c4c)
-		.setDescription(`⚡📝 | ${say}`)
+		.setDescription(`⚡📝 | `, say)
 		message.delete()
 		message.channel.send(embedSay)
     }
