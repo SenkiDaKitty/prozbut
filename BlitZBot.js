@@ -88,6 +88,7 @@ if (message.content === prefix + "ping"){
     message.channel.send(embed);
 }
 });
+var args = message.content.substring(prefix.length).split(" ");
 client.on('message', message => {
 	if (message.content === prefix + "say"){
 		message.delete()
