@@ -94,7 +94,7 @@ client.on('message', message => {
 		message.delete()
         const embedSay = new Discord.RichEmbed()
 		.setColor(0xff4c4c)
-		.setDescription(`⚡📝 | ` + args.slice(2).join(' '));
+		.setDescription(`⚡📝 | ` + args.join(" "));
 		message.channel.send(embedSay)
     }
 });
