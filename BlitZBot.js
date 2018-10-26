@@ -91,8 +91,8 @@ if (message.content === prefix + "ping"){
 client.on('message', message => {
 	if (message.content === prefix + "say"){
 var args = message.content.substring(prefix.length).split(" ");
-    let say = args.slice(1).join(' ');
-	 if(!say) return message.channel.Send("Ecrivez un message !")
+    	 let say = args.slice(1).join(' ');
+	 if(!say) return message.channel.sendMessage("Ecrivez un message !")
 else {
         var embedSay = new Discord.RichEmbed()
 		.setColor(0xff4c4c)
