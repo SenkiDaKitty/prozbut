@@ -43,6 +43,7 @@ if (message.content === prefix + "list") {
     message.delete(message);
     message.channel.sendEmbed(ServerListEmbed);
 }
+}
 });
 client.on('message', message => {
 if (message.content === prefix + "sinfo") {
