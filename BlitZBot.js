@@ -43,8 +43,6 @@ if (message.content === prefix + "list") {
     message.delete(message);
     message.channel.sendEmbed(ServerListEmbed);
 }
-}
-	  }
 });
 client.on('message', message => {
 if (message.content === prefix + "sinfo") {
@@ -102,6 +100,7 @@ else {
 		message.delete()
 		message.channel.send(embedSay)
     }
+}
 });
 client.on('message', message => {
     if (message.content.startsWith(prefix + "ban")) {
