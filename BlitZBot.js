@@ -44,6 +44,7 @@ if (message.content === prefix + "list") {
     message.channel.sendEmbed(ServerListEmbed);
 }
 }
+	  }
 });
 client.on('message', message => {
 if (message.content === prefix + "sinfo") {
