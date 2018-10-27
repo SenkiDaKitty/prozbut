@@ -112,12 +112,12 @@ client.on('message', async message => {
 	    var BanInstructions = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setTitle(`Instructions Ban`)
-	    	.addField(`Afin d'effectuer correctement un ban, soyez sûr(e)s que : `,` `)
-	    	.addField(`Vous ayez les permissions suffisantes pour effectuer cette action,`,` `)
-	    	.addField(`Que le bot ai les permissions suffisantes pour éxecuter vos ordres,`,` `)
-	    	.addField(`Que vous avez spécifiez un utilisateur à bannir,`,` `)
-	    	.addField(`Que vous avez spécifiez une raison.`,` `)
-	    	.addField(`Un problème alors que toutes ces conditions sont spécifiez ? Veillez alors contacter Senki, ou rejoignez son serveur et mentionnez Senki afin de régler le problème`)
+	    	.addField(`Afin d'effectuer correctement un ban, soyez sûr(e)s que : `)
+	    	.addField(`Vous ayez les permissions suffisantes pour effectuer cette action,`,`Vérifiez ce point`)
+	    	.addField(`Que le bot ai les permissions suffisantes pour éxecuter vos ordres,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez un utilisateur à bannir,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez une raison.`,`Vérifiez ce point`)
+	    	.addField(`Un problème alors que toutes ces conditions sont spécifiez ? Veillez alors contacter Senki, ou rejoignez son serveur et mentionnez Senki afin de régler le problème`,`Senki vous aidera`)
                 .setColor("0xff4c4c")
                 .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
             message.author.sendMessage(BanInstructions)
@@ -132,7 +132,18 @@ client.on('message', async message => {
               .setColor("0xff4c4c")
               .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
           message.delete()
-          message.author.sendMessage("```Soies sur que : \n Le Bot ai assez de permissions.\n Que vous ayez entrez un utilisateur à bannir.\n Que VOUS avez assez de permissions.\n D'avoir entrer une raison.```")
+	    var BanInstructions = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`Instructions Ban`)
+	    	.addField(`Afin d'effectuer correctement un ban, soyez sûr(e)s que : `)
+	    	.addField(`Vous ayez les permissions suffisantes pour effectuer cette action,`,`Vérifiez ce point`)
+	    	.addField(`Que le bot ai les permissions suffisantes pour éxecuter vos ordres,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez un utilisateur à bannir,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez une raison.`,`Vérifiez ce point`)
+	    	.addField(`Un problème alors que toutes ces conditions sont spécifiez ? Veillez alors contacter Senki, ou rejoignez son serveur et mentionnez Senki afin de régler le problème`,`Senki vous aidera`)
+                .setColor("0xff4c4c")
+                .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+            message.author.sendMessage(BanInstructions)
           message.channel.send(BanEmbed).catch((error) => { console.log(error.message) });
           return
         } else {
@@ -143,7 +154,18 @@ client.on('message', async message => {
                 .setColor("0xff4c4c")
                 .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
             message.delete()
-            message.author.sendMessage("```Soies sur que : \n Le Bot ai assez de permissions.\n Que vous ayez entrez un utilisateur à bannir.\n Que VOUS avez assez de permissions.\n D'avoir entrer une raison.```")
+			    var BanInstructions = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`Instructions Ban`)
+	    	.addField(`Afin d'effectuer correctement un ban, soyez sûr(e)s que : `)
+	    	.addField(`Vous ayez les permissions suffisantes pour effectuer cette action,`,`Vérifiez ce point`)
+	    	.addField(`Que le bot ai les permissions suffisantes pour éxecuter vos ordres,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez un utilisateur à bannir,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez une raison.`,`Vérifiez ce point`)
+	    	.addField(`Un problème alors que toutes ces conditions sont spécifiez ? Veillez alors contacter Senki, ou rejoignez son serveur et mentionnez Senki afin de régler le problème`,`Senki vous aidera`)
+                .setColor("0xff4c4c")
+                .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+            message.author.sendMessage(BanInstructions)
                 message.channel.send(EmbedBan).catch((error) => { console.log(error.message) });
                 return
         } else {
@@ -177,7 +199,18 @@ client.on('message', async message => {
             .setTitle("Sanctions >> Mute >> Permissions Insuffisantes | Les instructions ont été envoyé en MP")
             .setColor("0xff4c4c")
             .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.author.sendMessage("```Soies sur que : \n Le Bot ai assez de permissions.\n Que vous ayez entrez un utilisateur à bannir.\n Que VOUS avez assez de permissions.\n D'avoir entrer une raison.```")
+	    var MuteInstructions = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`Instructions Mute`)
+	    	.addField(`Afin d'effectuer correctement un ban, soyez sûr(e)s que : `,`⚡`)
+	    	.addField(`Vous ayez les permissions suffisantes pour effectuer cette action,`,`Vérifiez ce point`)
+	    	.addField(`Que le bot ai les permissions suffisantes pour éxecuter vos ordres,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez un utilisateur à mute,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez une raison.`,`Vérifiez ce point`)
+	    	.addField(`Un problème alors que toutes ces conditions sont spécifiez ? Veillez alors contacter Senki, ou rejoignez son serveur et mentionnez Senki afin de régler le problème`,`Senki vous aidera`)
+                .setColor("0xff4c4c")
+                .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+            message.author.sendMessage(MuteInstructions)
             message.delete()
             return message.channel.send(MuteEmbed);
         } else {
@@ -188,8 +221,19 @@ client.on('message', async message => {
                 .setTitle("Sanction >> Mute >> Utilisateur | Les instructions ont été envoyé en MP")
                 .setColor("0xff4c4c")
                 .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-                message.author.sendMessage("```Soies sur que : \n Le Bot ai assez de permissions.\n Que vous ayez entrez un utilisateur à bannir.\n Que VOUS avez assez de permissions.\n D'avoir entrer une raison.```")
                 message.delete()
+	var MuteInstructions = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`Instructions Mute`)
+	    	.addField(`Afin d'effectuer correctement un mute, soyez sûr(e)s que : `)
+	    	.addField(`Vous ayez les permissions suffisantes pour effectuer cette action,`,`Vérifiez ce point`)
+	    	.addField(`Que le bot ai les permissions suffisantes pour éxecuter vos ordres,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez un utilisateur à mute,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez une raison.`,`Vérifiez ce point`)
+	    	.addField(`Un problème alors que toutes ces conditions sont spécifiez ? Veillez alors contacter Senki, ou rejoignez son serveur et mentionnez Senki afin de régler le problème`,`Senki vous aidera`)
+                .setColor("0xff4c4c")
+                .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+            message.author.sendMessage(MuteInstructions)
                 return message.channel.send(MuteEmbed);
             } else {
                let role = message.guild.roles.find(r => r.name === "❌ Silence ❌");
@@ -236,23 +280,47 @@ client.on('message', async message => {
     }
     if (message.content.startsWith(`${prefix}unmute`)) {
         if (!message.member.permissions.has('MANAGE_MESSAGES')) {
-            var MuteEmbed = new Discord.RichEmbed()
+            var UnMuteEmbed = new Discord.RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setTitle("Sanctions >> Unmute >> Permissions Insuffisantes")
             .setColor("0xff4c4c")
             .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
             message.delete()
-            return message.channel.send(MuteEmbed);
+	var BanInstructions = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`Instructions Unmute`)
+	    	.addField(`Afin d'effectuer correctement un unmute, soyez sûr(e)s que : `)
+	    	.addField(`Vous ayez les permissions suffisantes pour effectuer cette action,`,`Vérifiez ce point`)
+	    	.addField(`Que le bot ai les permissions suffisantes pour éxecuter vos ordres,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez un utilisateur à unmute,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez une raison.`,`Vérifiez ce point`)
+	    	.addField(`Un problème alors que toutes ces conditions sont spécifiez ? Veillez alors contacter Senki, ou rejoignez son serveur et mentionnez Senki afin de régler le problème`,`Senki vous aidera`)
+                .setColor("0xff4c4c")
+                .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+            message.author.sendMessage(BanInstructions)
+            return message.channel.send(UnMuteEmbed);
         } else {
             let userToMute = message.mentions.users.first();
             if (!userToMute) {
-                var MuteEmbed = new Discord.RichEmbed()
+                var UnMuteEmbed = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setTitle("Sanctions >> Unmute >> Utilisateur")
                 .setColor("0xff4c4c")
                 .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                 message.delete()
-                return message.channel.send(MuteEmbed);
+	var UnmuteInstructions = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`Instructions Unmute`)
+	    	.addField(`Afin d'effectuer correctement un unmute, soyez sûr(e)s que : `)
+	    	.addField(`Vous ayez les permissions suffisantes pour effectuer cette action,`,`Vérifiez ce point`)
+	    	.addField(`Que le bot ai les permissions suffisantes pour éxecuter vos ordres,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez un utilisateur à unmute,`,`Vérifiez ce point`)
+	    	.addField(`Que vous avez spécifiez une raison.`,`Vérifiez ce point`)
+	    	.addField(`Un problème alors que toutes ces conditions sont spécifiez ? Veillez alors contacter Senki, ou rejoignez son serveur et mentionnez Senki afin de régler le problème`,`Senki vous aidera`)
+                .setColor("0xff4c4c")
+                .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+            message.author.sendMessage(UnmuteInstructions)
+                return message.channel.send(UnMuteEmbed);
             } else {
                 let role = message.guild.roles.find(r => r.name === "❌ Silence ❌");
 
