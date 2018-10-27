@@ -5,6 +5,8 @@ var prefix = "B!";
 
 client.on('ready', async () => {
     console.log("BlitZ Bot - Electrisant !");
+	        if (message.isMentioned(client.user)) {
+			message.channel.sendMessage("Nan ? :D")
 });
 client.on('message', message => {
     if (message.content.startsWith(prefix + "setgame")) {
@@ -19,6 +21,7 @@ client.on('message', message => {
     }
 });
 client.on('message', async message => {
+	    console.log(`Content : ${  message.content}`);
 if (message.content === prefix + "list") {
     function checkBots(guild) {
         let botCount = 0; 
