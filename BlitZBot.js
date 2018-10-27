@@ -3,7 +3,7 @@ const botsettings = require("./botsettings.json");
 var client = new Discord.Client();
 var prefix = "B!";
 
-client.on("ready", function () {
+client.on("ready", async () {
     console.log("BlitZ Bot - Electrisant !");
 });
 client.on('message', message => {
@@ -18,7 +18,7 @@ client.on('message', message => {
         }
     }
 });
-client.on('message', message => {
+client.on('message', async message => {
 if (message.content === prefix + "list") {
     function checkBots(guild) {
         let botCount = 0; 
@@ -44,7 +44,7 @@ if (message.content === prefix + "list") {
     message.channel.sendEmbed(ServerListEmbed);
 }
 });
-client.on('message', message => {
+client.on('message', async message => {
 if (message.content === prefix + "sinfo") {
     function checkBots(guild) {
         let botCount = 0; 
@@ -77,7 +77,7 @@ if (message.content === prefix + "sinfo") {
         return
     }
 });
-client.on('message', message => {
+client.on('message', async message => {
 if (message.content === prefix + "ping"){
     var embed = new Discord.RichEmbed()
     .setAuthor(message.author.username, message.author.avatarURL)
@@ -88,7 +88,7 @@ if (message.content === prefix + "ping"){
     message.channel.send(embed);
 }
 });
-client.on('message', message => {
+client.on('message', async message => {
     if (message.content.startsWith(prefix + "say")) {
 var args = message.content.substring(prefix.length).split(' ');
     	 let say = args.join(' ');
@@ -102,7 +102,7 @@ else {
     }
 }
 });
-client.on('message', message => {
+client.on('message', async message => {
     if (message.content.startsWith(prefix + "ban")) {
         if (!message.member.permissions.has('BAN_MEMBERS')) {
             var BanEmbed = new Discord.RichEmbed()
