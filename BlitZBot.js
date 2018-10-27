@@ -183,16 +183,17 @@ client.on('message', message => {
                 message.delete()
                 return message.channel.send(MuteEmbed);
             } else {
-                let role = message.guild.roles.find(r => r.name === "❌ Silence ❌");
+               let role = message.guild.roles.find(r => r.name === "❌ Silence ❌");
                 if (!role) {
                     try {
-                        role = message.guild.createRole({
+                        role = await message.guild.createRole({
                             name: "❌ Silence ❌",
                             color: "#c4c1c1",
                             permissions: []
                         });
+ 
                         message.guild.channels.forEach(async (channel) => {
-                            channel.overwritePermissions(role, {
+                            await channel.overwritePermissions(role, {
                                 SEND_MESSAGES: false,
                                 ADD_REACTIONS: false
                             });
@@ -201,10 +202,11 @@ client.on('message', message => {
                         console.log(e.stack);
                     }
                 }
+                const memberToMute = message.guild.member(userToMute) || await message.guild.fetchMember(userToMute);
+ 
+                await memberToMute.addRole(role);
                 var args = message.content.substring(prefix.length).split(" ");
                 let mutereason = args.slice(2).join(' ')
-                const memberToMute = message.guild.member(userToMute) || message.guild.fetchMember(userToMute);
-                memberToMute.addRole(role);
                 var MuteEmbed = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .addField(`La Sanction a été appliquée. !`,`L'utilisateur ${message.mentions.users.first()} à été réduit au silence par ${message.author.tag}, Raison : ${mutereason}`)
