@@ -112,10 +112,15 @@ client.on('message', async message => {
 	    var BanInstructions = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setTitle(`Instructions Ban`)
-	    	.addField(`Afin de `)
+	    	.setDescription(`Afin d'effectuer correctement un ban, soyez sûr(e)s que : `)
+	    	.setDescription(`Vous ayez les permissions suffisantes pour effectuer cette action,`)
+	    	.setDescription(`Que le bot ai les permissions suffisantes pour éxecuter vos ordres,`)
+	    	.setDescription(`Que vous avez spécifiez un utilisateur à bannir,`)
+	    	.setDescription(`Que vous avez spécifiez une raison.`)
+	    	.setDescription(`Un problème alors que toutes ces conditions sont spécifiez ? Veillez alors contacter Senki, ou rejoignez son serveur et mentionnez Senki afin de régler le problème`)
                 .setColor("0xff4c4c")
                 .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.author.sendMessage("```Soies sur que : \n Le Bot ai assez de permissions.\n Que vous ayez entrez un utilisateur à bannir.\n Que VOUS avez assez de permissions.\n D'avoir entrer une raison.```")
+            message.author.sendMessage(BanInstructions)
             message.channel.send(BanEmbed).catch((error) => { console.log(error.message) })
             return
         } else {
