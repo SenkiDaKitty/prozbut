@@ -92,7 +92,7 @@ if (message.content === prefix + "ping"){
 client.on('message', async message => {
     if (message.content.startsWith(prefix + "say")) {
 	let args = message.content.slice(prefix.length).trim().split('');
-    	let say = args.slice(2).join('')   
+    	let say = args.slice(3).join('')   
         var embedSay = new Discord.RichEmbed()
 		.setColor(0xff4c4c)
 		.setDescription(`⚡📝 | ${say}`)
