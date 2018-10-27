@@ -4,6 +4,7 @@ var client = new Discord.Client();
 var prefix = "B!";
 
 client.on('ready', async () => {
+	client.on('message', message => {
     console.log("BlitZ Bot - Electrisant !");
 	        if (message.isMentioned(client.user)) {
 			message.channel.sendMessage("Nan ? :D")
