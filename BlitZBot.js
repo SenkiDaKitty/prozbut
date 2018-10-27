@@ -5,8 +5,6 @@ var prefix = "B!";
 
 client.on('ready', async () => {
     console.log("BlitZ Bot - Electrisant !");
-	        if (message.isMentioned(client.user)) {
-            message.channel.sendMessage("Nan ? :D")
             }
 });
 client.on('message', message => {
