@@ -155,7 +155,7 @@ client.on('message', message => {
           .setColor("0x02e427")
           .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
           const logs = message.guild.channels.find(channel => channel.name === "logs");
-          logs.send(BanLogEmbed)
+          logs.sendMessage(BanLogEmbed)
             return;
                 }
             }
@@ -218,7 +218,7 @@ client.on('message', message => {
                 .setColor("0x02e427")
                 .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                 const logs = message.guild.channels.find(channel => channel.name === "logs");
-                logs.send(MuteLogEmbed)
+                logs.sendMessage(MuteLogEmbed)
                 return;
             }
         }
@@ -261,7 +261,7 @@ client.on('message', message => {
                 .setColor("0x02e427")
                 .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                 const logs = message.guild.channels.find(channel => channel.name === "logs");
-                logs.send(unMuteLogEmbed)
+                logs.sendMessage(unMuteLogEmbed)
                 return;
             }
         }   
