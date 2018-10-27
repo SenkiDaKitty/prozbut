@@ -91,7 +91,7 @@ if (message.content === prefix + "ping"){
 });
 client.on('message', async message => {
     if (message.content.startsWith(prefix + "say")) {
-var args = message.content.substring(prefix.length).split(' ');
+	let args = message.content.slice(prefix.length).trim().split(' ');
     	 let say = args.join(' ');
 	 if(!say) return message.channel.send("Ecrivez un message !")
 else {
@@ -112,6 +112,12 @@ client.on('message', async message => {
                 .setColor("0xff4c4c")
                 .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                 message.delete()
+	    var BanInstructions = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`Instructions Ban`)
+	    	.addField(`Afin de `)
+                .setColor("0xff4c4c")
+                .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
             message.author.sendMessage("```Soies sur que : \n Le Bot ai assez de permissions.\n Que vous ayez entrez un utilisateur à bannir.\n Que VOUS avez assez de permissions.\n D'avoir entrer une raison.```")
             message.channel.send(BanEmbed).catch((error) => { console.log(error.message) })
             return
