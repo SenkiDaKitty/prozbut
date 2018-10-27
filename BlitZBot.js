@@ -3,7 +3,7 @@ const botsettings = require("./botsettings.json");
 var client = new Discord.Client();
 var prefix = "B!";
 
-client.on("ready", async () {
+client.on('ready', async () => {
     console.log("BlitZ Bot - Electrisant !");
 });
 client.on('message', message => {
