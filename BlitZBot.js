@@ -93,11 +93,9 @@ client.on('message', async message => {
     if (message.content.startsWith(prefix + "say")) {
 	let args = message.content.slice(prefix.length).trim().split(' ');
     	 let say = args.join(' ');
-	 if(!say) return message.channel.send("Ecrivez un message !")
-else {
         var embedSay = new Discord.RichEmbed()
 		.setColor(0xff4c4c)
-		.setDescription(`⚡📝 | `, say)
+		.setDescription(`⚡📝 | ${say}`)
 		message.delete()
 		message.channel.send(embedSay)
     }
