@@ -5,7 +5,6 @@ var prefix = "B!";
 
 client.on('ready', async () => {
     console.log("BlitZ Bot - Electrisant !");
-            }
 });
 client.on('message', message => {
     if (message.content.startsWith(prefix + "setgame")) {
