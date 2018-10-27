@@ -268,6 +268,49 @@ client.on('message', async message => {
             }
         }   
     }
+	    if (message.content.startsWith(`${prefix}unmuteA`)) {
+        if (!message.member.permissions.has('MANAGE_MESSAGES')) {
+            var MuteEmbed = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .setTitle("Sanctions >> Unmute >> Permissions Insuffisantes")
+            .setColor("0xff4c4c")
+            .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+            message.delete()
+            return message.channel.send(MuteEmbed);
+        } else {
+            let userToMute = message.mentions.users.first();
+            if (!userToMute) {
+                var MuteEmbed = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle("Sanctions >> Unmute >> Utilisateur")
+                .setColor("0xff4c4c")
+                .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+                message.delete()
+                return message.channel.send(MuteEmbed);
+            } else {
+                let role = message.guild.roles.find(r => r.name === "🔇 Mute");
+
+                const memberToMute = message.guild.member(userToMute) || message.guild.fetchMember(userToMute);
+                
+                memberToMute.removeRole(role);
+                var unMuteEmbed = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .addField(`La Sanction a bien été supprimé`,`L'utilisateur ${message.mentions.users.first()} à été demute par ${message.author.tag}.`)
+                .setColor("0x02e427")
+                .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+                message.delete()
+                message.channel.send(unMuteEmbed);
+                var unMuteLogEmbed = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .addField(`Sanctions Supprimé ( Unmute )`,`L'utilisateur ${message.mentions.users.first()} à été demute par ${message.author.tag}.`)
+                .setColor("0x02e427")
+                .setFooter("BlitzBot, Toutes tentatives de piratage conduira à une poursuite en justice ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+                const logs = message.guild.channels.find(channel => channel.name === "logs");
+                logs.sendMessage(unMuteLogEmbed)
+                return;
+            }
+        }   
+    }
 });
 
 client.login(process.env.BOT_TOKEN);
