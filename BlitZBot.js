@@ -4,10 +4,10 @@ var client = new Discord.Client();
 var prefix = "B!";
 
 client.on('ready', async () => {
-	client.on('message', message => {
     console.log("BlitZ Bot - Electrisant !");
 	        if (message.isMentioned(client.user)) {
-			message.channel.sendMessage("Nan ? :D")
+            message.channel.sendMessage("Nan ? :D")
+            }
 });
 client.on('message', message => {
     if (message.content.startsWith(prefix + "setgame")) {
@@ -313,8 +313,13 @@ client.on('message', async message => {
                 logs.sendMessage(unMuteLogEmbed)
                 return;
             }
-        }   
+        }
     }
+});
+    client.on('message', message => {
+                if (message.isMentioned(client.user)) {
+                    message.channel.sendMessage("Nan ? :D")
+            }
 });
 
 client.login(process.env.BOT_TOKEN);
