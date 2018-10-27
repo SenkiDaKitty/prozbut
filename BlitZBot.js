@@ -92,14 +92,13 @@ if (message.content === prefix + "ping"){
 client.on('message', async message => {
     if (message.content.startsWith(prefix + "say")) {
 	let args = message.content.slice(prefix.length).trim().split('');
-    	 et say = args.join('');
+    	 let say = args.join('');
         var embedSay = new Discord.RichEmbed()
 		.setColor(0xff4c4c)
 		.setDescription(`⚡📝 | ${say}`)
 		message.delete()
 		message.channel.send(embedSay)
     }
-}
 });
 client.on('message', async message => {
     if (message.content.startsWith(prefix + "ban")) {
