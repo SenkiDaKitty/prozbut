@@ -102,6 +102,7 @@ client.on('message', async message => {
 		message.delete()
 		message.channel.send(embedSay)
     }
+}
 });
 client.on('message', async message => {
     if (message.content.startsWith(prefix + "ban")) {
@@ -180,7 +181,7 @@ client.on('message', async message => {
           .setAuthor(message.author.username, message.author.avatarURL)
           .addField(`Penalty applied !`,`User ${message.mentions.users.first()} has been banned by ${message.author.tag}, Reason : ${reason}`)
           .setColor("0x02e427")
-          .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+          .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473"))
         var BanLogEmbed = new Discord.RichEmbed()
           .setAuthor(message.author.username, message.author.avatarURL)
           .addField(`Penalty applied ( Ban ) !`,`User ${message.mentions.users.first()} has been banned by ${message.author.tag}, Reason : ${reason}`)
