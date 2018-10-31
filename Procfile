@@ -1,1 +1,1 @@
-worker: node BlitZBot.js
+worker: node ProZBot.js
