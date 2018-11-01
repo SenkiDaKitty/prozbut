@@ -10,6 +10,7 @@ client.on('message', message => {
 if (message.content === "Plox i want sum turtle twerk") {
 	message.channel.sendMessage("https://cdn.discordapp.com/attachments/506530289053466625/507636544400654363/tenor.gif")
 	return
+}
 });
 client.on('message', message => {
     if (message.content.startsWith(prefix + "setgame")) {
