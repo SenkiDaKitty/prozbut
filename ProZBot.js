@@ -344,16 +344,25 @@ client.on('message', async message => {
                 const logs = message.guild.channels.find(channel => channel.name === "logs");
                 logs.sendMessage(unMuteLogEmbed)
                 return;
-            }
-        }   
-    }
+          	}
+    	}   
+}
 });
     client.on('message', message => {
      if (message.isMentioned(client.user)) {
         if (message.member.id != '183549541470044161') {
-                    message.channel.sendMessage("No u")
+                    var answers = [
+  "No u",
+  "Shut the fuck up, to see ?",
+  "Who are you ?",
+  "Let me alone !",
+  "Haha yes i agree... i didn't understand"
+]
+
+var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
+	message.channel.sendMessage(randomAnswer)	
 	} else {
-		message.channel.sendMessage("Yes master ? :D")
+		message.channel.sendMessage("Yes Senki ? :D")
 	}
      }
 });
