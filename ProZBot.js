@@ -349,8 +349,13 @@ client.on('message', async message => {
     }
 });
     client.on('message', message => {
-                if (message.isMentioned(client.user)) {
+     if (message.isMentioned(client.user)) {
+        if (message.member.id != '183549541470044161') {
                     message.channel.sendMessage("No u")
+	} else {
+		message.channel.sendMessage("Yes master ? :D")
+	}
+     }
             }
 });
 
