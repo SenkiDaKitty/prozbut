@@ -364,7 +364,9 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
 	} else {
 		message.channel.sendMessage("Yes Senki ? :D")
     return
-    }
+    });
+	         client.on('message', message => {
+     if (message.isMentioned(client.user)) {
 		        if (message.member.id = '262185369301155840') {
                 message.channel.sendMessage("Hey Proz's Owner :D")
                 }
