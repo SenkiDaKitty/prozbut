@@ -368,7 +368,7 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
 				message.channel.sendMessage("Hey Proz's Owner :)")
 	}
      }
-  
+     }
 });
 
 client.login(process.env.BOT_TOKEN);
