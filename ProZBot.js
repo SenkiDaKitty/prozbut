@@ -363,12 +363,12 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
 	message.channel.sendMessage(randomAnswer)	
 	} else {
 		message.channel.sendMessage("Yes Senki ? :D")
-	} else {
+    return
+    }
 		        if (message.member.id = '262185369301155840') {
-				message.channel.sendMessage("Hey Proz's Owner :)")
-	}
-     }
-     }
+                message.channel.sendMessage("Hey Proz's Owner :D")
+                }
+            }
 });
 
 client.login(process.env.BOT_TOKEN);
