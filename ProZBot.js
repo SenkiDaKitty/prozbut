@@ -19,6 +19,7 @@ function play(connection, message) {
      else connection.disconnect();
     });
 }
+});
 
 
 client.on("guildMemberAdd", function(member) {               
@@ -114,7 +115,7 @@ if (message.content === prefix + "list") {
     .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
     message.delete(message);
     message.channel.sendEmbed(ServerListEmbed);
-}
+    }
 });
 client.on('message', async message => {
 if (message.content === prefix + "sinfo") {
@@ -492,7 +493,6 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
              if (!serverQueue) return message.channel.send("[ProzBot - MusicSystem] - There are currently no music playing.")
             if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
         }
-    });
     });
 
 client.login(process.env.BOT_TOKEN);
