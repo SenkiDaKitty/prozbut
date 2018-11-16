@@ -398,11 +398,11 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
              return;
             }
             
-            if(!servers[message.guild.id]) servers[message.guild.id] = {
+            if(!servers[409293910305800192]) servers[409293910305800192] = {
                 queue: []
             };
             
-            var server = servers[message.guild.id];
+            var server = servers[409293910305800192];
       
             server.queue.push(args[1]);
             
@@ -416,7 +416,7 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
             message.channel.sendMessage("[ProzBot - MusicSystem] - You aren't in a voice channel.");    
              return;
              }
-            var server = servers[message.guild.id];
+            var server = servers[409293910305800192];
             if(server.dispatcher) server.dispatcher.end();
      }
   
@@ -425,8 +425,8 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
              message.channel.sendMessage("[ProzBot - MusicSystem] - You aren't in a voice channel.");     
              return;
             }
-             const serverQueue = queue.get(message.guild.id);
-             var server = servers[message.guild.id];
+             const serverQueue = queue.get(409293910305800192);
+             var server = servers[409293910305800192];
              if (!serverQueue) return message.channel.send("[ProzBot - MusicSystem] - There are currently no music playing.")
             if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
         }
