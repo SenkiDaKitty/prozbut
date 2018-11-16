@@ -18,77 +18,11 @@ function play(connection, message) {
      if (server.queue[0]) play(connection, message);
      else connection.disconnect();
     });
-}
-});
-
-
-client.on("guildMemberAdd", function(member) {               
-    member.addRole(member.guild.roles.find("name", "FANS"));
-    var games = [
-    "ProZ Bot V.1.0",
-    "By SenkiDaKitty",
-    "https://goo.gl/isUzdY",
-    " " + new Date(),
-     client.users.size + " members !"
- ]
-  client.user.setActivity(setInterval(function() {
-  client.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.youtube.com/channel/UCWxkV4uET7jtwPb7w58o_ZQ", type: "ONLINE"})
-  }, 3000))
-  
- member.guild.channels.find("name", "general").sendMessage("", {    
-            embed: {
-                color: 0x008000,
-                author: '',
-                title: '', 
-                description: '', 
-                fields: [
-                    {
-                        name: member.displayName + " joined ! :white_check_mark: ",
-                        value: 'We are now ' + client.users.size + " members !",
-                        inline: false
-                   }],                     
-                                   footer: {
-            text: 'Welcome !',
-          },
-            }
- });
-});
-
-client.on("guildMemberRemove", function(member) {
-    
-    var games = [
-    "ProZ Bot V.1.0",
-    "By SenkiDaKitty",
-    "https://goo.gl/isUzdY",
-    " " + new Date(),
-     client.users.size + " members !"
- ]
-  client.user.setActivity(setInterval(function() {
-  client.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.youtube.com/channel/UCWxkV4uET7jtwPb7w58o_ZQ", type: "ONLINE"})
-  }, 3000))
-    
- member.guild.channels.find("name", "general").sendMessage("", {    
-            embed: {
-                color: 0xFF0000,
-                author: '',
-                title: '', 
-                description: '', 
-                fields: [
-                    {
-                        name: member.displayName + " left ! :c :",
-                        value: 'We are now ' + client.users.size + " members...",
-                        inline: false
-                   }],                     
-                                   footer: {
-            text: 'Good Bye !',
-          },
-            }
- });
 client.on('message', message => {
 if (message.content === "Plox i want sum turtle twerk") {
 	message.channel.sendMessage("https://cdn.discordapp.com/attachments/506530289053466625/507636544400654363/tenor.gif")
 	return
-}
+        }
 });
 client.on('message', async message => {
 	    console.log(`Content : ${  message.content}`);
@@ -492,7 +426,8 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
              var server = servers[message.guild.id];
              if (!serverQueue) return message.channel.send("[ProzBot - MusicSystem] - There are currently no music playing.")
             if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-        }
-    });
+    }
+}
+});
 
 client.login(process.env.BOT_TOKEN);
