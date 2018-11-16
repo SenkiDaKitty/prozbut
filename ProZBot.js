@@ -366,8 +366,8 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
     }
 }
     });
-
         client.on('message', message => {
+            var args = message.content.split(' ');
 			       if (message.content === prefix + "play"){
              if (!args[1]) {
              message.channel.sendMessage("[ProzBot - MusicSystem] - Write a link.");   
