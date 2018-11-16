@@ -366,24 +366,7 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
     }
 }
     });
-	         client.on('message', message => {
-     if (message.isMentioned(client.user)) {
-		        if (message.member.id != '262185369301155840') {
-                    var answers = [
-  "No u",
-  "Shut the fuck up, to see ?",
-  "Who are you ?",
-  "Let me alone !",
-  "Haha yes i agree... i didn't understand"
-]
 
-var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
-	message.channel.sendMessage(randomAnswer)	
-	} else {
-		message.channel.sendMessage("Hey Proz's Owner :D")
-                }
-            }
-        });
         client.on('message', message => {
 			       if (message.content === prefix + "play"){
              if (!args[1]) {
