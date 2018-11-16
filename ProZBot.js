@@ -4,6 +4,8 @@ var client = new Discord.Client();
 var prefix = "P!";
 
 });
+var client = new Discord.Client();
+
 client.on('ready', async () => {
     console.log("ProZBot - The Proe Bot !");
 
