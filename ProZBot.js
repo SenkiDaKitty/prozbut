@@ -1,13 +1,17 @@
 const Discord = require("discord.js");
+const YTDL = require("ytdl-core");
+const queue = new Map();
 const botsettings = require("./botsettings.json");
 var client = new Discord.Client();
 var prefix = "P!";
+
+var servers = {};
 
 client.on('ready', async () => {
     console.log("ProZBot - The Proe Bot !");
 });
 client.on('message', message => {
- var server = servers[message.guild.id];
+ var server = servers[409293910305800192];
 
     server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
     
