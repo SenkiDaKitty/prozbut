@@ -6,11 +6,13 @@ var client = new Discord.Client();
 var prefix = "P!";
 
 var servers = {};
+const serverStats = {
+    guildID: '409293910305800192',
+  };
 
 client.on('ready', async () => {
     console.log("ProZBot - The Proe Bot !");
 });
-
 function play(connection, message) {
  var server = servers[message.guild.id];
     
@@ -378,11 +380,11 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
              return;
             }
             
-            if(!servers[409293910305800192]) servers[409293910305800192] = {
+            if(!servers[message.guild.id]) servers[message.guild.id] = {
                 queue: []
             };
             
-            var server = servers[409293910305800192];
+            var server = servers[message.guild.id];
       
             server.queue.push(args[1]);
             
@@ -396,7 +398,7 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
             message.channel.sendMessage("[ProzBot - MusicSystem] - You aren't in a voice channel.");    
              return;
              }
-            var server = servers[409293910305800192];
+            var server = servers[message.guild.id];
             if(server.dispatcher) server.dispatcher.end();
      }
   
@@ -405,8 +407,8 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
              message.channel.sendMessage("[ProzBot - MusicSystem] - You aren't in a voice channel.");     
              return;
             }
-             const serverQueue = queue.get(409293910305800192);
-             var server = servers[409293910305800192];
+             const serverQueue = queue.get(message.guild.id);
+             var server = servers[message.guild.id];
              if (!serverQueue) return message.channel.send("[ProzBot - MusicSystem] - There are currently no music playing.")
             if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
         }
