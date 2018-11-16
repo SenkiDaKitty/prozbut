@@ -5,10 +5,11 @@ var prefix = "P!";
 
 client.on('ready', async () => {
     console.log("ProZBot - The Proe Bot !");
-
+});
+client.on('message', message => {
 function play(connection, message) {
  var server = servers[message.guild.id];
-    
+
     server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
     
     server.queue.shift();
@@ -87,18 +88,6 @@ if (message.content === "Plox i want sum turtle twerk") {
 	message.channel.sendMessage("https://cdn.discordapp.com/attachments/506530289053466625/507636544400654363/tenor.gif")
 	return
 }
-});
-client.on('message', message => {
-    if (message.content.startsWith(prefix + "setgame")) {
-        if (message.member.id != '183549541470044161') {
-            return message.channel.sendMessage("Seul un administrateur du bot peut exécuter cette commande :warning:")
-        } else {
-        var args = message.content.substring(prefix.length).split(" ");
-        let game = args.slice(1).join(' ')   
-    message.channel.sendMessage(`Description mis à jour : ${game}`)
-    client.user.setActivity(game)
-        }
-    }
 });
 client.on('message', async message => {
 	    console.log(`Content : ${  message.content}`);
@@ -460,6 +449,7 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
 		message.channel.sendMessage("Hey Proz's Owner :D")
                 }
             }
+        });
 			       if (message.content === prefix + "play"){
              if (!args[1]) {
              message.channel.sendMessage("[ProzBot - MusicSystem] - Write a link.");   
@@ -501,9 +491,8 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
              var server = servers[message.guild.id];
              if (!serverQueue) return message.channel.send("[ProzBot - MusicSystem] - There are currently no music playing.")
             if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-     }
-});
-
-});
+        }
+    });
+    });
 
 client.login(process.env.BOT_TOKEN);
