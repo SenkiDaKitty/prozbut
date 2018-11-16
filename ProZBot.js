@@ -1,18 +1,25 @@
 const Discord = require("discord.js");
 const YTDL = require("ytdl-core");
-const queue = new Map();
-const botsettings = require("./botsettings.json");
 var client = new Discord.Client();
-var prefix = "P!";
+var prefix = "A!";
+const queue = new Map();
 
 var servers = {};
-const serverStats = {
-    guildID: '409293910305800192',
-  };
 
-client.on('ready', async () => {
-    console.log("ProZBot - The Proe Bot !");
+const serverStats = {
+  guildID: '439522665800138752',
+  totalUsersID: '481578470502170624',
+  memberCountID: '481580084105576468',
+  botCountID: '481580212392427531'
+};
+
+
+client.on("ready", function () {
+
+ //  client.user.setGame("", "https://www.twitch.tv/austelengine")
+    console.log("AustelBot V3 - Connecté");
 });
+
 function play(connection, message) {
  var server = servers[message.guild.id];
     
@@ -23,360 +30,213 @@ function play(connection, message) {
     server.dispatcher.on("end", function() {
      if (server.queue[0]) play(connection, message);
      else connection.disconnect();
-});
-}
-client.on('message', async message => {
-	    console.log(`Content : ${  message.content}`);
-if (message.content === prefix + "list") {
-    function checkBots(guild) {
-        let botCount = 0; 
-        guild.members.forEach(member => { 
-          if(member.user.bot) botCount++; 
-        });
-        return botCount; 
-      }
-    
-      function checkMembers(guild) {
-        let memberCount = 0;
-        guild.members.forEach(member => {
-          if(!member.user.bot) memberCount++;  
-        });
-        return memberCount;
-      }
-    var ServerListEmbed = new Discord.RichEmbed()
-    .setAuthor(message.author.username,message.author.avatarURL)
-    .addField(`My server list :`,client.guilds.map(r => `${r.name} | **${message.guild.memberCount}** membres.`))
-    .setColor("0x02e427")
-    .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-    message.delete(message);
-    message.channel.sendEmbed(ServerListEmbed);
-    }
-});
-client.on('message', async message => {
-if (message.content === prefix + "sinfo") {
-    function checkBots(guild) {
-        let botCount = 0; 
-        guild.members.forEach(member => { 
-          if(member.user.bot) botCount++; 
-        });
-        return botCount; 
-      }
-    
-      function checkMembers(guild) {
-        let memberCount = 0;
-        guild.members.forEach(member => {
-          if(!member.user.bot) memberCount++; 
-        });
-        return memberCount;
-      }
-    
-      var ServerInfoEmbed = new Discord.RichEmbed()
-        .setAuthor(`${message.guild.name} - Informations`, message.guild.iconURL) 
-        .setColor('#f4df42') 
-        .addField('Server Owner :', message.guild.owner, true) 
-        .addField('Channels :', message.guild.channels.size, true) 
-        .addField(`Members :`, message.guild.memberCount) 
-        .addField('Humans :', checkMembers(message.guild), true)
-        .addField('Bot :', checkBots(message.guild), true)
-        .setFooter('Serveur created the :')
-        .setTimestamp(message.guild.createdAt); 
-    
-        message.channel.send(ServerInfoEmbed);
-        return
-    }
-});
-client.on('message', async message => {
-if (message.content === prefix + "ping"){
-    var embed = new Discord.RichEmbed()
-    .setAuthor(message.author.username, message.author.avatarURL)
-    .addField(`${Math.round(client.ping)} ms`, "Host on da SenKeh server")
-    .setColor("0x02e427")
-    .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-    message.delete()
-    message.channel.send(embed);
-}
-});
-client.on('message', async message => {
-    if (message.content.startsWith(prefix + "say")) {
-	if (!message.member.permissions.has('MANAGE_MESSAGES')) {
-		return message.channel.sendMessage("You need sum permissions ! ")
-	} else {
-	let args = message.content.slice(prefix.length).trim().split('');
-    	let say = args.slice(3).join('')   
-        var embedSay = new Discord.RichEmbed()
-		.setColor(0xff4c4c)
-		.setDescription(`⚡📝 | ${say}`)
-		message.delete()
-		message.channel.send(embedSay)
-    }
-}
-});
-client.on('message', async message => {
-    if (message.content.startsWith(prefix + "ban")) {
-        if (!message.member.permissions.has('BAN_MEMBERS')) {
-            var BanEmbed = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle(`Permissions >> No enough permissions | Check your DM`)
-                .setColor("0xff4c4c")
-                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-                message.delete()
-	    var BanInstructions = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle(`Ban instructions`)
-	    	.addField(`To execute correctly a ban, be sure that :`)
-	    	.addField(`That you have enough permissions to execute that command,`,`Verify it`)
-	    	.addField(`That the bot has enough permissions to obey you,`,`Verify it`)
-	    	.addField(`That you wrote an user to ban,`,`Verify it`)
-	    	.addField(`That you entered a reason.`,`Verify it`)
-                .setColor("0xff4c4c")
-                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.author.sendMessage(BanInstructions)
-            message.channel.send(BanEmbed).catch((error) => { console.log(error.message) })
-            return
-        } else {
-        let member = message.mentions.members.first();
-        if(!member) {
-          var BanEmbed = new Discord.RichEmbed()
-              .setAuthor(message.author.username, message.author.avatarURL)
-              .setTitle(`Sanctions >> Ban >> User | Check your DM`)
-              .setColor("0xff4c4c")
-    		.setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-          message.delete()
-	    var BanInstructions = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle(`Instructions Ban`)
-                .setTitle(`Ban instructions`)
-	    	.addField(`To execute correctly a ban, be sure that :`)
-	    	.addField(`That you have enough permissions to execute that command,`,`Verify it`)
-	    	.addField(`That the bot has enough permissions to obey you,`,`Verify it`)
-	    	.addField(`That you wrote an user to ban,`,`Verify it`)
-	    	.addField(`That you entered a reason.`,`Verify it`)
-                .setColor("0xff4c4c")
-                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.author.sendMessage(BanInstructions)
-          message.channel.send(BanEmbed).catch((error) => { console.log(error.message) });
-          return
-        } else {
-        if(!member.bannable) {
-                var EmbedBan = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle(`Sanctions >> Ban >> No enough permissions | Check your DM`)
-                .setColor("0xff4c4c")
-               .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.delete()
-	var BanInstructions = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle(`Ban instructions`)
-	    	.addField(`To execute correctly a ban, be sure that :`)
-	    	.addField(`That you have enough permissions to execute that command,`,`Verify it`)
-	    	.addField(`That the bot has enough permissions to obey you,`,`Verify it`)
-	    	.addField(`That you wrote an user to ban,`,`Verify it`)
-	    	.addField(`That you entered a reason.`,`Verify it`)
-                .setColor("0xff4c4c")
-                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.author.sendMessage(BanInstructions)
-                message.channel.send(EmbedBan).catch((error) => { console.log(error.message) });
-                return
-        } else {
-            var args = message.content.substring(prefix.length).split(" ");
-            let reason = args.slice(2).join(' ')            
-            if(!reason) reason = "Aucune Raison n'a été fournie, désolé (ツ)"
-
-        member.ban(reason)
-          .catch(error => message.reply(`Désolé ${message.author} Je ne peux pas sanctionnés la personne : ${error}`));
-          message.channel.send(new Discord.RichEmbed()
-          .setAuthor(message.author.username, message.author.avatarURL)
-          .addField(`Penalty applied !`,`User ${message.mentions.users.first()} has been banned by ${message.author.tag}, Reason : ${reason}`)
-          .setColor("0x02e427")
-          .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473"))
-        var BanLogEmbed = new Discord.RichEmbed()
-          .setAuthor(message.author.username, message.author.avatarURL)
-          .addField(`Penalty applied ( Ban ) !`,`User ${message.mentions.users.first()} has been banned by ${message.author.tag}, Reason : ${reason}`)
-          .setColor("0x02e427")
-          .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-          const logs = message.guild.channels.find(channel => channel.name === "logs");
-          logs.sendMessage(BanLogEmbed)
-            return;
-                }
-            }
-        }
-    }
-    if (message.content.startsWith(`${prefix}mute`)) {
-        if (!message.member.permissions.has('MANAGE_MESSAGES')) {
-            var MuteEmbed = new Discord.RichEmbed()
-            .setAuthor(message.author.username, message.author.avatarURL)
-            .setTitle("Sanctions >> Mute >> No enough permissions | Check your DM")
-            .setColor("0xff4c4c")
-               .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-	    var MuteInstructions = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle(`Mute instructions`)
-	    	.addField(`To execute correctly a mute, be sure that :`)
-	    	.addField(`That you have enough permissions to execute that command,`,`Verify it`)
-	    	.addField(`That the bot has enough permissions to obey you,`,`Verify it`)
-	    	.addField(`That you wrote an user to mute,`,`Verify it`)
-	    	.addField(`That you entered a reason.`,`Verify it`)
-                .setColor("0xff4c4c")
-                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.author.sendMessage(MuteInstructions)
-            message.delete()
-            return message.channel.send(MuteEmbed);
-        } else {
-            let userToMute = message.mentions.users.first();
-            if (!userToMute) {
-                var MuteEmbed = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle("Sanction >> Mute >> User | Check your DM")
-                .setColor("0xff4c4c")
-                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-                message.delete()
-	var MuteInstructions = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle(`Mute instructions`)
-	    	.addField(`To execute correctly a mute, be sure that :`)
-	    	.addField(`That you have enough permissions to execute that command,`,`Verify it`)
-	    	.addField(`That the bot has enough permissions to obey you,`,`Verify it`)
-	    	.addField(`That you wrote an user to mute,`,`Verify it`)
-	    	.addField(`That you entered a reason.`,`Verify it`)
-                .setColor("0xff4c4c")
-                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.author.sendMessage(MuteInstructions)
-                return message.channel.send(MuteEmbed);
-            } else {
-               let role = message.guild.roles.find(r => r.name === "❌ MutedProZ ❌");
-                if (!role) {
-                    try {
-                        role = await message.guild.createRole({
-                            name: "❌ MutedProZ ❌",
-                            color: "#c4c1c1",
-                            permissions: []
-                        });
- 
-                        message.guild.channels.forEach(async (channel) => {
-                            await channel.overwritePermissions(role, {
-                                SEND_MESSAGES: false,
-                                ADD_REACTIONS: false
-                            });
-                        });
-                    } catch (e) {
-                        console.log(e.stack);
-                    }
-                }
-                const memberToMute = message.guild.member(userToMute) || await message.guild.fetchMember(userToMute);
- 
-                await memberToMute.addRole(role);
-                var args = message.content.substring(prefix.length).split(" ");
-                let mutereason = args.slice(2).join(' ')
-                var MuteEmbed = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .addField(`Penalty applied !`,`User ${message.mentions.users.first()} has been muted by ${message.author.tag}, Reason : ${mutereason}`)
-                .setColor("0x02e427")
-      		.setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-                message.delete()
-                message.channel.send(MuteEmbed); 
-                var MuteLogEmbed = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .addField(`Penalty applied ( Mute ) !`,`User ${message.mentions.users.first()} has been muted by ${message.author.tag}, Reason : ${mutereason}`)
-                .setColor("0x02e427")
-    		.setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-                const logs = message.guild.channels.find(channel => channel.name === "logs");
-                logs.sendMessage(MuteLogEmbed)
-                return;
-            }
-        }
-    }
-    if (message.content.startsWith(`${prefix}unmute`)) {
-        if (!message.member.permissions.has('MANAGE_MESSAGES')) {
-            var UnMuteEmbed = new Discord.RichEmbed()
-            .setAuthor(message.author.username, message.author.avatarURL)
-            .setTitle("Sanctions >> Unmute >> No enough permissions")
-            .setColor("0xff4c4c")
-    .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.delete()
-	var UnMuteInstructions = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle(`UnMute instructions`)
-	    	.addField(`To execute correctly a unmute, be sure that :`)
-	    	.addField(`That you have enough permissions to execute that command,`,`Verify it`)
-	    	.addField(`That the bot has enough permissions to obey you,`,`Verify it`)
-	    	.addField(`That you wrote an user to unmute,`,`Verify it`)
-                .setColor("0xff4c4c")
-                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.author.sendMessage(UnMuteInstructions)
-            return message.channel.send(UnMuteEmbed);
-        } else {
-            let userToMute = message.mentions.users.first();
-            if (!userToMute) {
-                var UnMuteEmbed = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle("Sanctions >> Unmute >> User")
-                .setColor("0xff4c4c")
-    .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-                message.delete()
-	var UnmuteInstructions = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-               .setTitle(`UnMute instructions`)
-	    	.addField(`To execute correctly a unmute, be sure that :`)
-	    	.addField(`That you have enough permissions to execute that command,`,`Verify it`)
-	    	.addField(`That the bot has enough permissions to obey you,`,`Verify it`)
-	    	.addField(`That you wrote an user to unmute,`,`Verify it`)
-                .setColor("0xff4c4c")
-                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-            message.author.sendMessage(UnmuteInstructions)
-                return message.channel.send(UnMuteEmbed);
-            } else {
-                let role = message.guild.roles.find(r => r.name === "❌ MutedProZ ❌");
-
-                const memberToMute = message.guild.member(userToMute) || message.guild.fetchMember(userToMute);
-                
-                memberToMute.removeRole(role);
-                var unMuteEmbed = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .addField(`Penalty removed`,`User ${message.mentions.users.first()} has been unmute by ${message.author.tag}.`)
-                .setColor("0x02e427")
-                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-                message.delete()
-                message.channel.send(unMuteEmbed);
-                var unMuteLogEmbed = new Discord.RichEmbed()
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .addField(`Penalty removed ( Unmute )`,`User ${message.mentions.users.first()} has been unmute by ${message.author.tag}.`)
-                .setColor("0x02e427")
-     		.setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
-                const logs = message.guild.channels.find(channel => channel.name === "logs");
-                logs.sendMessage(unMuteLogEmbed)
-                return;
-          	}
-    	}   
-}
-});
-    client.on('message', message => {
-     if (message.isMentioned(client.user)) {
-        if (message.member.id != '183549541470044161') {
-                    var answers = [
-  "No u",
-  "Shut the fuck up, to see ?",
-  "Who are you ?",
-  "Let me alone !",
-  "Haha yes i agree... i didn't understand"
-]
-
-var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
-	message.channel.sendMessage(randomAnswer)	
-	} else {
-		message.channel.sendMessage("Yes Senki ? :D")
-    return
-    }
-}
     });
-        client.on('message', message => {
-            var args = message.content.split(' ');
-			       if (message.content === prefix + "play"){
+}
+
+
+client.on("guildMemberAdd", function(member) {               
+    member.addRole(member.guild.roles.find("name", ">! Member !<"));
+    var games = [
+    "A!help | AUSTELBOT V3.0",
+    "Développé par XeCrafT",
+    "http://austelclient.net",
+    " " + new Date(),
+     client.users.size + " utilisateurs !"
+ ]
+  client.user.setActivity(setInterval(function() {
+  client.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/AustelBot", type: "STREAMING"})
+  }, 3000))
+  
+ member.guild.channels.find("name", "austel-chat").sendMessage("", {    
+            embed: {
+                color: 0x008000,
+                author: '',
+                title: '', 
+                description: '', 
+                fields: [
+                    {
+                        name: member.displayName + " a rejoint ! :white_check_mark: ",
+                        value: 'Nous sommes désormais ' + client.users.size + " utilisateurs !",
+                        inline: false
+                   }],                     
+                                   footer: {
+            text: 'Bievenue à toi ! :D',
+          },
+            }
+ });
+});
+
+client.on("guildMemberRemove", function(member) {
+    
+    var games = [
+    "A!Help | AUSTELBOT V3.0",
+    "Développé par XeCrafT",
+    "http://austelclient.net",
+    " " + new Date(),
+     client.users.size + " utilisateurs !"
+ ]
+  client.user.setActivity(setInterval(function() {
+  client.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/AustelBot", type: "STREAMING"})
+  }, 3000))
+    
+ member.guild.channels.find("name", "austel-chat").sendMessage("", {    
+            embed: {
+                color: 0xFF0000,
+                author: '',
+                title: '', 
+                description: '', 
+                fields: [
+                    {
+                        name: member.displayName + " a quitté ! :x:",
+                        value: 'Nous sommes désormais ' + client.users.size + " utilisateurs !",
+                        inline: false
+                   }],                     
+                                   footer: {
+            text: 'À Bientôt !',
+          },
+            }
+ });
+    
+});
+
+client.on('message', message => {
+    
+    var ping = client.ping;
+    var member = message.member;
+    var users = client.users.size;
+    var args = message.content.split(' ');
+
+    if (message.content === prefix + "help"){
+        var embed = new Discord.RichEmbed()
+        .setTitle("Ci-dessous, les nombreuses commandes du AustelBot.")
+        .addField("**__Commandes utiles:__**",`[${prefix}help](https://discord.gg/mF9tEaW) - Liste des commandes du bot. \n[${prefix}ping](https://discord.gg/mF9tEaW) - Ping d'Austelbot. \n[${prefix}user](https://discord.gg/mF9tEaW). Voir le nombre de personne sur le discord. \n[${prefix}invite](https://discord.gg/mF9tEaW). Invitation pour le discord Austel Engine. \n[${prefix}austeltv](https://discord.gg/mF9tEaW). Lien twitch d'AustelTV. \n[${prefix}twitter](https://discord.gg/mF9tEaW). Lien twitter d'AustelEngine. \n[${prefix}partenaires](https://discord.gg/mF9tEaW). Liste des partenaires et lien du formulaire.`)
+        .addField("**__Commandes de modération:__**",`[${prefix}kick @user raison](https://discord.gg/mF9tEaW) - Exclure un utilisateur n'ayant pas respecter le règlement. \n[${prefix}ban @user raison](https://discord.gg/mF9tEaW) - Bannir un utilisateur dans un cas extrême.\n[${prefix}clear (nombre)](https://discord.gg/mF9tEaW) - Supprime un nombre x de message dans un salon. \n[${prefix}mute @user raison](https://discord.gg/mF9tEaW) - Mute un utilisateur n'ayant pas respecter le règlement.`)
+        .setColor("0x000ff")
+        .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+        message.delete() 
+    message.channel.send(embed);
+    }
+  
+    if (message.content === prefix + "ping"){
+        if(ping <= 99) {
+             var embed = new Discord.RichEmbed()
+             .setAuthor(message.author.username, message.author.avatarURL)
+             .addField(`${Math.round(client.ping)} ms`, "Le robot a actuellement une bonne connexion.")
+             .setColor("0x7cc576")
+             .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+             message.channel.send(embed);
+        } else if(ping <= 200) {
+             var embed = new Discord.RichEmbed()
+             .setAuthor(message.author.username, message.author.avatarURL)
+             .addField(`${Math.round(client.ping)} ms`, "Le robot a une connexion moyenne.")
+             .setColor("0xffe200")
+             .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+             message.channel.send(embed);
+        } else if(ping <= 999) {
+             var embed = new Discord.RichEmbed()
+             .setAuthor(message.author.username, message.author.avatarURL)
+             .addField(`${Math.round(client.ping)} ms`, "Le robot a une mauvaise connexion.")
+             .setColor("0xdb3328")
+             .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+             message.channel.send(embed);
+        }
+    }
+    if (message.content === prefix + "users"){
+         if(users <= 100) {
+             var embed = new Discord.RichEmbed()
+             .setAuthor(message.author.username, message.author.avatarURL)
+             .addField(users + " membres", "Le Discord a actuellement moins de 100 membres.")
+             .setColor("0xdb3328")
+             .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+             message.channel.send(embed);
+        } else if(users <= 200) {
+             var embed = new Discord.RichEmbed()
+             .setAuthor(message.author.username, message.author.avatarURL)
+             .addField(users + " membres", "Le Discord a actuellement 200 membres et moins.")
+             .setColor("0x7cc576")
+             .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+             message.channel.send(embed);
+        } else if(users >= 201) {
+             var embed = new Discord.RichEmbed()
+             .setAuthor(message.author.username, message.author.avatarURL)
+             .addField(users + " membres", "Le Discord a actuellement plus de 200 membres !")
+             .setColor("0xffe200")
+             .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+             message.channel.send(embed);
+        }
+    }
+
+    if(message.content.startsWith(prefix + "clear")){
+        if (!message.member.permissions.has('MANAGE_MESSAGES')) {
+               var ClearEmbed = new Discord.RichEmbed()
+               .setAuthor(message.author.username, message.author.avatarURL)
+               .setTitle("Vous n'avez pas la permission !")
+               .setColor("0x000ff")
+               .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+               message.delete()
+            return message.channel.send(ClearEmbed)};
+            var ClearrEmbed = new Discord.RichEmbed()
+              .setAuthor(message.author.username, message.author.avatarURL)
+              .setTitle("Vous devez préciser le nombre de message à supprimer.")
+              .setColor("0x000ff")
+              .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+              message.delete()
+           let args = message.content.split(" ").slice(1);
+           if(!args[0]) return message.channel.send(ClearrEmbed);
+            message.channel.bulkDelete(args[0]).then(() => {
+                var ClearEmbed = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`${args[0]} messages ont été suprimés.`)
+                .setColor("0x000ff")
+                .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+                message.delete()
+                message.channel.send(ClearEmbed);
+           });
+        }
+  
+      if (message.content === prefix + "invite"){
+            var embed = new Discord.RichEmbed()
+           .setAuthor(message.author.username, message.author.avatarURL)
+           .addField("Voici un lien d'invitation", "https://discord.gg/mF9tEaW")
+           .setColor("0x000ff")
+           .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+           message.channel.send(embed);
+        }
+        if (message.content == prefix + "twitter"){
+            var EmbedTwitter = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .addField("Voici le lien du twitter.", `[Cliquez ici](https://twitter.com/austelenginefr)`)
+            .setColor("0x000ff")
+            .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+            message.delete()
+            message.channel.send(EmbedTwitter)
+        }
+        if (message.content == prefix + "austeltv"){
+            var EmbedTwitter = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .addField("Voici le lien Twitch.", `[Cliquez ici](https://www.twitch.tv/austelengine)`)
+            .setColor("0x000ff")
+            .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+            message.delete()
+            message.channel.send(EmbedTwitter)
+        }  
+        if (message.content == prefix + "partenaires"){
+            var EmbedTwitter = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .addField("Il n'y a pas encore de partenaire .", `[Cliquez ici](https://goo.gl/forms/ghn1D2Ff5mABCciq2) pour le devenir`)
+            .setColor("0x000ff")
+            .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+            message.delete()
+            message.channel.send(EmbedTwitter)
+        }
+       
+      if (message.content === prefix + "play"){
              if (!args[1]) {
-             message.channel.sendMessage("[ProzBot - MusicSystem] - Write a link.");   
+             message.channel.sendMessage("[AustelBot - Musique] - Vous devez mettre un lien.");   
              return;
             }
             if(!message.member.voiceChannel) {
-             message.channel.sendMessage("[ProzBot - MusicSystem] - You aren't in a voice channel.");    
+             message.channel.sendMessage("[AustelBot - Musique] - Vous devez être dans un salon vocal.");    
              return;
             }
             
@@ -395,7 +255,7 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
   
    if (message.content === prefix + "skip"){
              if(!message.member.voiceChannel) {
-            message.channel.sendMessage("[ProzBot - MusicSystem] - You aren't in a voice channel.");    
+            message.channel.sendMessage("[AustelBot - Musique] - Vous devez être dans un salon vocal.");    
              return;
              }
             var server = servers[message.guild.id];
@@ -404,14 +264,206 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
   
      if (message.content === prefix + "stop"){
              if(!message.member.voiceChannel) {
-             message.channel.sendMessage("[ProzBot - MusicSystem] - You aren't in a voice channel.");     
+             message.channel.sendMessage("[AustelBot - Musique] - Vous devez être dans un salon vocal.");     
              return;
             }
              const serverQueue = queue.get(message.guild.id);
              var server = servers[message.guild.id];
-             if (!serverQueue) return message.channel.send("[ProzBot - MusicSystem] - There are currently no music playing.")
+             if (!serverQueue) return message.channel.send("[AustelBot - Musique] - Aucune musique est joué, je ne peux donc exécuter cette commande.")
             if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-        }
-    });
+     }
+});
 
-client.login(process.env.BOT_TOKEN);
+// MUSIC SYSTEM IS BASED OF https://github.com/anthonyholstein/Swea-Bot/blob/master/.gitignore/index.js
+
+//Commandes de modération 
+
+client.on('message', async message => {
+    let command = message.content.split(" ")[0];
+    const args = message.content.slice(prefix.length).split(/ +/);
+    command = args.shift().toLowerCase();
+
+
+    if (message.content.startsWith(`${prefix}mute`)) {
+        if (!message.member.permissions.has('MANAGE_MESSAGES')) {
+            var MuteEmbed = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .setTitle("Vous n'avez pas la permission !")
+            .setColor("0x000ff")
+            .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+            message.delete()
+            return message.channel.send(MuteEmbed);
+        } else {
+            let userToMute = message.mentions.users.first();
+            if (!userToMute) {
+                var MuteEmbed = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle("Merci de mentionner l'utilisateur à mute")
+                .setColor("0x000ff")
+                .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+                message.delete()
+                return message.channel.send(MuteEmbed);
+            } else {
+                let role = message.guild.roles.find(r => r.name === "🔇 Mute");
+                if (!role) {
+                    try {
+                        role = await message.guild.createRole({
+                            name: "🔇 Mute",
+                            color: "#c4c1c1",
+                            permissions: []
+                        });
+                        message.guild.channels.forEach(async (channel) => {
+                            await channel.overwritePermissions(role, {
+                                SEND_MESSAGES: false,
+                                ADD_REACTIONS: false
+                            });
+                        });
+                    } catch (e) {
+                        console.log(e.stack);
+                    }
+                }
+                const memberToMute = message.guild.member(userToMute) || await message.guild.fetchMember(userToMute);
+                await memberToMute.addRole(role);
+                var MuteEmbed = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .addField(`Le mute a bien été effectué.`,`L'utilisateur ${message.mentions.users.first()} à été mute par ${message.author.tag}.`)
+                .setColor("0x000ff")
+                .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+                message.delete()
+                message.channel.send(MuteEmbed); 
+                return;
+            }
+        }
+    }
+
+    if (message.content.startsWith(`${prefix}unmute`)) {
+        if (!message.member.permissions.has('MANAGE_MESSAGES')) {
+            var MuteEmbed = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .setTitle("Vous n'avez pas la permission !")
+            .setColor("0x000ff")
+            .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+            message.delete()
+            return message.channel.send(MuteEmbed);
+        } else {
+            let userToMute = message.mentions.users.first();
+            if (!userToMute) {
+                var MuteEmbed = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle("Merci de mentionner l'utilisateur à unmute")
+                .setColor("0x000ff")
+                .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+                message.delete()
+                return message.channel.send(MuteEmbed);
+            } else {
+                let role = message.guild.roles.find(r => r.name === "🔇 Mute");
+
+                const memberToMute = message.guild.member(userToMute) || await message.guild.fetchMember(userToMute);
+                
+                await memberToMute.removeRole(role);
+                var MuteEmbed = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .addField(`Le unmute a bien été effectué.`,`L'utilisateur ${message.mentions.users.first()} à été demute par ${message.author.tag}.`)
+                .setColor("0x000ff")
+                .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+                message.delete()
+                message.channel.send(MuteEmbed);
+                return;
+           }                                                              
+        }
+    }
+
+    if(message.content.startsWith(prefix + "ban")){
+        if (!message.member.permissions.has('BAN_MEMBERS')) {
+            var BanEmbed = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`Tu n'as la permssion de faire cette commande.`)
+                .setColor("0x000ff")
+                .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+                message.delete()
+            return message.channel.send(BanEmbed).catch((error) => { console.log(error.message) })
+        }
+            
+        let member = message.mentions.members.first();
+        if(!member) {
+          var BanEmbed = new Discord.RichEmbed()
+              .setAuthor(message.author.username, message.author.avatarURL)
+              .setTitle(`Merci de mentionner l'utilisateur à bannir`)
+              .setColor("0x000ff")
+              .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+          message.delete()
+          return message.channel.send(BanEmbed).catch((error) => { console.log(error.message) });
+        }
+        if(!member.bannable) {
+                var EmbedBan = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`Je ne peux pas interdire cet utilisateur! Ont-ils un rôle plus élevé? Ai-je des droits BAN_MEMBERS?`)
+                .setColor("0x000ff")
+                .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+            message.delete()
+                return message.channel.send(EmbedBan).catch((error) => { console.log(error.message) });
+        }
+    
+        let reason = args.slice(1).join(' ');
+        if(!reason) reason = "Aucune raison fournie.";
+        
+        member.ban(reason)
+          .catch(error => message.reply(`Désolé ${message.author} Je ne peux pas interdire à cause de: ${error}`));
+          message.channel.send(new Discord.RichEmbed()
+          .setAuthor(message.author.username, message.author.avatarURL)
+          .setDescription(`${message.mentions.members.first()} a été banni par ${message.author.tag} car: ${reason}`)
+          .setColor("0x000ff")
+          .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")).catch((error) => { console.log(error.message) });
+    }     
+    
+    if(message.content.startsWith(prefix + "kick")){
+        if (!message.member.permissions.has('KICK_MEMBERS')) {
+            var KickEmbed = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .setTitle(`Tu n'as la permssion de faire cette commande.`)
+                .setColor("0x000ff")
+                .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+                message.delete()
+           return message.reply(KickEmbed).catch(console.log("permission = null"));
+       }
+        if(message.mentions.users.size === 0) {
+            var KickEmbed = new Discord.RichEmbed()
+              .setAuthor(message.author.username, message.author.avatarURL)
+              .setTitle(`Merci de mentionner l'utilisateur à expluser`)
+              .setColor("0x000ff")
+              .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+          message.delete()
+           return message.reply(KickEmbed).catch(console.log("mention = null"));
+       }
+        let kickMember = message.guild.member(message.mentions.users.first());
+         if(!kickMember) {
+            var EmbedKick = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .setTitle(`Cet utilisateur est introuvable ou impossible à expluser.`)
+            .setColor("0x000ff")
+            .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+            message.delete()
+              return message.reply(EmbedKick).catch(console.log("perm = null"));
+        }
+        if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) {
+            var EmbedKick = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .setTitle(`Je n'ai pas la permission KICK_MEMBERS pour faire ceci.`)
+            .setColor("0x000ff")
+            .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+            message.delete()
+            return message.reply(EmbedKick).catch(console.log("KICK_MEMBERS = null"));
+        }
+         kickMember.kick().then(member => {
+            var EmbedKick = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .setDescription(`**${member.user.username}** a été expulsé du discord par **${message.author.username}.**`)
+            .setColor("0x000ff")
+            .setFooter("AustelEngine, un produit de Nietsloh Inc. © Tous droits réservés. 2016-2018")
+            message.delete()
+        message.channel.send(EmbedKick).catch(console.log("Expulsion reussie"))}).catch(console.log("Expulsion reussie"));
+    }
+
+});
+
+client.login(process.env.TOKEN);
