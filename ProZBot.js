@@ -12,7 +12,7 @@ client.on('ready', async () => {
 });
 
 function play(connection, message) {
- var server = servers[409293910305800192];
+ var server = servers[message.guild.id];
     
     server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
     
@@ -384,6 +384,7 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
                 }
             }
         });
+        client.on('message', message => {
 			       if (message.content === prefix + "play"){
              if (!args[1]) {
              message.channel.sendMessage("[ProzBot - MusicSystem] - Write a link.");   
@@ -426,5 +427,6 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
              if (!serverQueue) return message.channel.send("[ProzBot - MusicSystem] - There are currently no music playing.")
             if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
         }
+    });
 
 client.login(process.env.BOT_TOKEN);
