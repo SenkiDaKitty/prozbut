@@ -7,7 +7,7 @@ const queue = new Map();
 var servers = {};
 
 const serverStats = {
-  guildID: '439522665800138752',
+  guildID: '409293910305800192',
   totalUsersID: '481578470502170624',
   memberCountID: '481580084105576468',
   botCountID: '481580212392427531'
