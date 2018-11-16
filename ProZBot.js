@@ -10,9 +10,10 @@ var servers = {};
 client.on('ready', async () => {
     console.log("ProZBot - The Proe Bot !");
 });
-client.on('message', message => {
- var server = servers[409293910305800192];
 
+function play(connection, message) {
+ var server = servers[409293910305800192];
+    
     server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
     
     server.queue.shift();
@@ -20,13 +21,8 @@ client.on('message', message => {
     server.dispatcher.on("end", function() {
      if (server.queue[0]) play(connection, message);
      else connection.disconnect();
-    });
-client.on('message', message => {
-if (message.content === "Plox i want sum turtle twerk") {
-	message.channel.sendMessage("https://cdn.discordapp.com/attachments/506530289053466625/507636544400654363/tenor.gif")
-    return
-}
 });
+}
 client.on('message', async message => {
 	    console.log(`Content : ${  message.content}`);
 if (message.content === prefix + "list") {
@@ -430,6 +426,5 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
              if (!serverQueue) return message.channel.send("[ProzBot - MusicSystem] - There are currently no music playing.")
             if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
         }
-});
 
 client.login(process.env.BOT_TOKEN);
