@@ -38,7 +38,7 @@ client.on('message', function(message) {
 });
 
 function includesRealy(message, str) {
-    return (message.content.includes(str) || message.content.includes(str.toUpperCase()) || message.content.includes(str.toLowerCase()));
+    return (message.content.toLowerCase().includes(str.toLowerCase()) || message.content.toLowerCase().includes(str.toLowerCase()) || message.content.toLowerCase().includes(str.toLowerCase()));
 }
 });
 
