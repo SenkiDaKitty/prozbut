@@ -43,9 +43,9 @@ client.on('message', message => {
       .setAuthor(message.author.username,message.author.avatarURL)
       .setDescription(`${message.author.tag} used forbiden words ! If he continues, you ill be able to mute him.`)
       .setColor(0xff4c4c)
-    const warn = message.guild.channels.find(channel => channel.name === "insults");
-          warn.sendMessage(`<@&409300822539632650>`) | message.delete()
-          warn.sendMessage(InsultLog)
+    var warn = message.guild.channels.find(channel => channel.name === "insults");
+          warn.sendMessage(`<@&409300822539632650>`);
+          warn.sendEmbed(InsultLog);
           return;
 });
 client.on('message', message => {
