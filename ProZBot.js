@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const botsettings = require("./botsettings.json");
 var client = new Discord.Client();
 var prefix = "P!";
-
+hgghhghg
 client.on('ready', async () => {
     console.log("ProZBot - The Proe Bot !");
     });
