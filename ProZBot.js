@@ -41,6 +41,7 @@ function includesRealy(message, str) {
     return (message.content.includes(str) || message.content.includes(str.toUpperCase()) || message.content.includes(str.toLowerCase()))
 
 }
+});
 
 client.on('message', message => {
     if (message.content.startsWith(prefix + "setgame")) {
@@ -396,6 +397,6 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
     return
                 }
             }
-        });
+});
 	        
 client.login(process.env.BOT_TOKEN);
