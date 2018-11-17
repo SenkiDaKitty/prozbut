@@ -26,20 +26,19 @@ client.on('message', function(message) {
             .setDescription(`${message.author.tag} ! Don't insult, I sent a message to the staff and they will, only if you continue, punish you !`)
             .setColor(0xff4c4c)
         message.channel.send(InsultB)
+        var InsultLog = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .setDescription(`${message.author.tag} used forbiden words ! If he continues, you ill be able to mute him.`)
+            .setColor(0xff4c4c);
+        var warn = message.guild.channels.find(channel => channel.name === "insults");
+        warn.sendMessage(`<@&409300822539632650>`);
+        warn.sendEmbed(InsultLog);
+        return;
     }
-    var InsultLog = new Discord.RichEmbed()
-        .setAuthor(message.author.username, message.author.avatarURL)
-        .setDescription(`${message.author.tag} used forbiden words ! If he continues, you ill be able to mute him.`)
-        .setColor(0xff4c4c);
-    var warn = message.guild.channels.find(channel => channel.name === "insults");
-    warn.sendMessage(`<@&409300822539632650>`);
-    warn.sendEmbed(InsultLog);
-    return;
 });
 
 function includesRealy(message, str) {
-    return (message.content.includes(str) || message.content.includes(str.toUpperCase()) || message.content.includes(str.toLowerCase()))
-
+    return (message.content.includes(str) || message.content.includes(str.toUpperCase()) || message.content.includes(str.toLowerCase()));
 }
 });
 
