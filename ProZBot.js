@@ -12,7 +12,7 @@ if (message.content === "Plox i want sum turtle twerk") {
 	return
 }
 });
-lient.on('message', message => {
+client.on('message', message => {
 
     function includesRealy(message,str){
         return(
