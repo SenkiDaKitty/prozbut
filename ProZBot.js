@@ -12,6 +12,41 @@ if (message.content === "Plox i want sum turtle twerk") {
 	return
 }
 });
+lient.on('message', message => {
+
+    function includesRealy(message,str){
+        return(
+          message.content.includes(str) ||
+          message.content.includes(str.toUpperCase()) ||
+          message.content.includes(str.toLowerCase())
+        )
+      }
+       
+      client.on('message',function(message){
+        if(
+          includesRealy(message,'Bitch') ||
+          includesRealy(message,'Hoer') ||
+          includesRealy(message,'Gay') ||
+          includesRealy(message,'gay') ||
+          includesRealy(message,'hoer') ||
+          includesRealy(message,'bitch')
+        ){
+            message.delete()
+    var InsultB = new Discord.RichEmbed()
+    .setAuthor(message.author.username,message.author.avatarURL)
+    .setDescription(`${message.author.tag} ! Don't insult, I sent a message to the staff and they will, only if you continue, punish you !`)
+    .setColor(0xff4c4c)
+          message.channel.send(InsultB)
+        }
+      });
+      var InsultLog = new Discord.RichEmbed()
+      .setAuthor(message.author.username,message.author.avatarURL)
+      .setDescription(`${message.author.tag} used forbiden words ! If he continues, you ill be able to mute him.`)
+      .setColor(0xff4c4c)
+    const warn = message.guild.channels.find(channel => channel.name === "insults");
+          warn.sendMessage(InsultLog)
+          warn.sendMessage(`<@&409300822539632650>`) | message.delete()
+});
 client.on('message', message => {
     if (message.content.startsWith(prefix + "setgame")) {
         if (message.member.id != '183549541470044161') {
