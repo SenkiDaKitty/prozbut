@@ -21,7 +21,6 @@ client.on('message', function(message) {
     if (isInsulte) {
        message.channel.send(`${message.author.tag} Satan`, {
     file: "https://cdn.discordapp.com/attachments/506530289053466625/514783981749927946/9k.png"
-       }
     }
 });
 	    client.on('message', function(message) {
