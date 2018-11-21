@@ -27,18 +27,21 @@ client.on('message', function(message) {
     if (message.author.equals(client.user)) return;
 
     var isInsulte2 = false;
-    var insulte2 = ['who is unit'];
+    var insulte2 = ['who is senki'];
     for (var i = 0; i < insulte2.length; i++) {
         if (message.content.toLowerCase().includes(insulte2[i])) {
             isInsulte2 = true;
             break;
         }
     }
-
+        if (message.member.id != '183549541470044161') {
     if (isInsulte2) {
-        message.channel.send(`${message.author} a cunt`)
-        message.channel.sendFile("https://cdn.discordapp.com/attachments/506530289053466625/514784105964109824/41516608_665696933801075_1461839791599631077_n.jpg")
+        message.channel.send(`${message.author} my creator`)
+        message.channel.sendFile("https://cdn.discordapp.com/avatars/183549541470044161/6e6830f29a1da5e7561effdf64a9a086.jpg?size=1024")
+    } else {
+        message.channel.send(`You are my creator ! :3`)
     }
+}
 });
 client.on('message', message => {
     if (message.content.startsWith(prefix + "setgame")) {
