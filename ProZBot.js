@@ -5,35 +5,6 @@ var prefix = "P!";
 
 client.on('ready', async () => {
     console.log("ProZBot - The Proe Bot !");
-    });
-client.on('message', function(message) {
-    if (message.author.equals(client.user)) return;
-
-    var isInsulte = false;
-    var insulte = ['dumbass', 'hoer', 'commit die', 'bitch'];
-    for (var i = 0; i < insulte.length; i++) {
-        if (message.content.toLowerCase().includes(insulte[i])) {
-            isInsulte = true;
-            break;
-        }
-    }
-
-    if (isInsulte) {
-        message.delete()
-        var InsultB = new Discord.RichEmbed()
-            .setAuthor(message.author.username, message.author.avatarURL)
-            .setDescription(`${message.author.tag} ! Don't insult, I sent a message to the staff and they will, only if you continue, punish you !`)
-            .setColor(0xff4c4c)
-        message.channel.send(InsultB)
-        var InsultLog = new Discord.RichEmbed()
-            .setAuthor(message.author.username, message.author.avatarURL)
-            .setDescription(`${message.author.tag} used forbiden words ! If he continues, you ill be able to mute him.`)
-            .setColor(0xff4c4c);
-        var warn = message.guild.channels.find(channel => channel.name === "insults");
-        warn.sendMessage(`<@&409300822539632650>`);
-        warn.sendEmbed(InsultLog);
-        return;
-    }
 });
 client.on('message', message => {
     if (message.content.startsWith(prefix + "setgame")) {
