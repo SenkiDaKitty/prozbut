@@ -19,7 +19,8 @@ client.on('message', function(message) {
     }
 
     if (isInsulte) {
-       message.channel.send(`${message.author} Satan`, {file: ["https://cdn.discordapp.com/attachments/506530289053466625/514783981749927946/9k.png"]})
+       message.channel.send(`${message.author} Satan`)
+       message.channel.sendFile("https://cdn.discordapp.com/attachments/506530289053466625/514783981749927946/9k.png")
     }
 });
 	    client.on('message', function(message) {
@@ -35,7 +36,8 @@ client.on('message', function(message) {
     }
 
     if (isInsulte2) {
-        message.channel.send(`${message.author} a cunt`, {file: ["https://cdn.discordapp.com/attachments/506530289053466625/514784105964109824/41516608_665696933801075_1461839791599631077_n.jpg"]})
+        message.channel.send(`${message.author} a cunt`)
+        message.channel.sendFile("https://cdn.discordapp.com/attachments/506530289053466625/514784105964109824/41516608_665696933801075_1461839791599631077_n.jpg")
     }
 });
 client.on('message', message => {
