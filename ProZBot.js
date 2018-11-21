@@ -38,9 +38,8 @@ client.on('message', function(message) {
     if (isInsulte2) {
         message.channel.send(`${message.author} my creator`)
         message.channel.sendFile("https://cdn.discordapp.com/avatars/183549541470044161/6e6830f29a1da5e7561effdf64a9a086.jpg?size=1024")
-    } else {
+    } else
         message.channel.send(`You are my creator ! :3`)
-    }
 }
 });
 client.on('message', message => {
