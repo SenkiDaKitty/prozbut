@@ -347,10 +347,8 @@ client.on('message', async message => {
         if (message.member.id != '183549541470044161') {
                     var answers = [
   "No u",
-  "Shut the fuck up, to see ?",
-  "Who are you ?",
-  "Let me alone !",
-  "Haha yes i agree... i didn't understand"
+  "Ye neb ?",
+  "Don't pin me, pin cray instead !",
 ]
 
 var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
