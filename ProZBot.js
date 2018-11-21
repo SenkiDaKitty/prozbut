@@ -20,7 +20,7 @@ client.on('message', function(message) {
 
     if (isInsulte) {
        message.channel.send(`${message.author.tag} Satan`, {
-    file: "https://cdn.discordapp.com/attachments/506530289053466625/514783981749927946/9k.png"
+    file: "https://cdn.discordapp.com/attachments/506530289053466625/514783981749927946/9k.png" }
     }
 });
 	    client.on('message', function(message) {
@@ -37,8 +37,7 @@ client.on('message', function(message) {
 
     if (isInsulte2) {
        message.channel.send(`${message.author.tag} a cunt`, {
-    file: "https://cdn.discordapp.com/attachments/506530289053466625/514784105964109824/41516608_665696933801075_1461839791599631077_n.jpg"
-       }
+    file: "https://cdn.discordapp.com/attachments/506530289053466625/514784105964109824/41516608_665696933801075_1461839791599631077_n.jpg" }
     }
 });
 client.on('message', message => {
