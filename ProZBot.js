@@ -41,7 +41,6 @@ client.on('message', function(message) {
     } else
         message.channel.send(`You are my creator ! :3`)
     }
-}
 });
 client.on('message', message => {
     if (message.content.startsWith(prefix + "setgame")) {
