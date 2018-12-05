@@ -376,5 +376,42 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
                 }
             }
 });
-	        
+client.on('message', message => {
+    if (message.content.startsWith(`${prefix}info`)) {
+let memberInfo = message.mentions.members.first();
+
+if(!memberInfo){
+    message.delete()
+  var userinf = new Discord.RichEmbed()
+      .setAuthor(message.author.username)
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(`Your informations, ${message.author} !`)
+      .setColor(0x02e427)
+      .addField("Full Username:", `${message.author.username}#${message.author.discriminator}`)
+      .addField("ID:", message.author.id)
+      .addField("Status :", message.author.presence.status)
+      .addField("Last message :", message.author.lastMessage)
+      .setFooter("Your join date : ")
+      .setTimestamp(message.member.joinedTimestamp)
+
+      message.channel.send(userinf);
+
+}else{
+
+  var userinfoo = new Discord.RichEmbed()
+      .setAuthor(memberInfo.displayName)
+      .setThumbnail(memberInfo.user.avatarURL)
+      .setDescription(`User informations : ${memberInfo.user} !`)
+      .setColor(0x02e427)
+      .addField("Full username :", `${memberInfo.user.username}#${memberInfo.user.discriminator}`)
+      .addField("ID :", memberInfo.id)
+      .addField("Status :", memberInfo.presence.status)
+      .addField("Last message :", memberInfo.user.lastMessage)
+      .setFooter("Join date :")
+      .setTimestamp(memberInfo.joinedTimestamp)
+
+      message.channel.send(userinfoo);
+}
+}
+});		        
 client.login(process.env.BOT_TOKEN);
