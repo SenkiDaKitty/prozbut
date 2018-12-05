@@ -20,7 +20,7 @@ client.on('message', function(message) {
 
     if (isInsulte) {
        message.channel.send(`${message.author} Satan`)
-       message.channel.sendFile("https://cdn.discordapp.com/attachments/506530289053466625/514783981749927946/9k.png")
+       message.channel.send("https://cdn.discordapp.com/attachments/506530289053466625/514783981749927946/9k.png")
     }
 });
 client.on('message', message => {
