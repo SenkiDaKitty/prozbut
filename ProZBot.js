@@ -23,6 +23,23 @@ client.on('message', function(message) {
        message.channel.sendFile("https://cdn.discordapp.com/attachments/506530289053466625/514783981749927946/9k.png")
     }
 });
+client.on('message', function(message) {
+    if (message.author.equals(client.user)) return;
+
+    var isInsulte = false;
+    var insulte = ['who is senki'];
+    for (var i = 0; i < insulte.length; i++) {
+        if (message.content.toLowerCase().includes(insulte[i])) {
+            isInsulte = true;
+            break;
+        }
+    }
+
+    if (isInsulte) {
+       message.channel.send(`${message.author} A nob`)
+       message.channel.sendFile("https://cdn.discordapp.com/attachments/506530289053466625/520635401694609418/trigger.gif")
+    }
+});
 client.on('message', message => {
     if (message.content.startsWith(prefix + "setgame")) {
         if (message.member.id != '183549541470044161') {
