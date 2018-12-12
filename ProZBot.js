@@ -21,7 +21,7 @@ client.on('message', function(message) {
     if (isInsulte) {
        message.channel.send(`${message.author} Satan`)
 
-       message.channel.sendFile("https://cdn.discordapp.com/attachments/506530289053466625/514783981749927946/9k.png")
+       message.channel.sendFile("https://media.discordapp.net/attachments/506530289053466625/522342780329263114/unknown.png")
     }
 });
 client.on('message', function(message) {
@@ -65,7 +65,7 @@ client.on('message', message => {
         bullitarget.sendMessage("999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999")
         bullitarget.sendMessage("999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999")
         bullitarget.sendMessage(`Its **Cray** that sent the bulli rocket on u neb `)
-        message.channel.sendMessage("I launched the bulli rocket")
+        message.channel.sendMessage("I launched the bulli rocket on da nub : ", bullitarget)
         message.channel.sendFile("https://media.discordapp.net/attachments/478892198935396367/522339955633160202/220px-Full_Blood_Wagyu_Bull_in_Chile.png")
 
         
@@ -97,7 +97,7 @@ client.on('message', message => {
         bullitarget.sendMessage("999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999")
         bullitarget.sendMessage("999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999")
         bullitarget.sendMessage(`Its **Senkeh** that sent the bulli rocket on u neb `)
-message.channel.sendMessage("I launched the bulli rocket")
+        message.channel.sendMessage("I launched the bulli rocket on da nub : ", bullitarget)
         message.channel.sendFile("https://media.discordapp.net/attachments/478892198935396367/522339955633160202/220px-Full_Blood_Wagyu_Bull_in_Chile.png")
     }
 }
