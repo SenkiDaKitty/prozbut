@@ -474,7 +474,7 @@ if(!memberInfo){
       .addField("ID:", message.author.id)
       .addField("Status :", message.author.presence.status)
       .addField("Last message :", message.author.lastMessage)
-      .addField("Your Roles :", member.roles.map(role => role.name).join(", "))
+      .addField("Your Roles :", `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
       .setFooter("Your join date : ")
       .setTimestamp(message.member.joinedTimestamp)
 
