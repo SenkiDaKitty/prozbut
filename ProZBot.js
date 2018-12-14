@@ -462,6 +462,12 @@ client.on('message', message => {
 let memberInfo = message.mentions.members.first();
 const args = message.content.split(/ +/g);
 const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
+let bot;
+if (member.user.client === true) {
+    bot = "Yes";
+  } else {
+    bot = "No";
+  }
 
 if(!memberInfo){
     message.delete()
@@ -491,6 +497,7 @@ if(!memberInfo){
       .addField("ID :", memberInfo.id)
       .addField("Status :", memberInfo.presence.status)
       .addField("Last message :", memberInfo.user.lastMessage)
+      .addField("Bot?", `${bot}`, true)
       .addField("Roles :", `${memberInfo.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
       .setFooter("Join date :")
       .setTimestamp(memberInfo.joinedTimestamp)
