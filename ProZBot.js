@@ -472,7 +472,7 @@ if(!memberInfo){
       .addField("ID:", message.author.id)
       .addField("Status :", message.author.presence.status)
       .addField("Last message :", message.author.lastMessage)
-      .addField("Your Roles :", `${member.roles.filter(r => r.id !== msg.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
+      .addField("Your Roles :", `${memberInfo.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
       .setFooter("Your join date : ")
       .setTimestamp(message.member.joinedTimestamp)
 
@@ -489,7 +489,7 @@ if(!memberInfo){
       .addField("ID :", memberInfo.id)
       .addField("Status :", memberInfo.presence.status)
       .addField("Last message :", memberInfo.user.lastMessage)
-      .addField("Roles :", `${member.roles.filter(r => r.id !== msg.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
+      .addField("Roles :", `${memberInfo.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
       .setFooter("Join date :")
       .setTimestamp(memberInfo.joinedTimestamp)
 
