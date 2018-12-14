@@ -460,6 +460,8 @@ var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
 client.on('message', message => {
     if (message.content.startsWith(`${prefix}info`)) {
 let memberInfo = message.mentions.members.first();
+const args = message.content.split(/ +/g);
+const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
 
 if(!memberInfo){
     message.delete()
@@ -472,7 +474,7 @@ if(!memberInfo){
       .addField("ID:", message.author.id)
       .addField("Status :", message.author.presence.status)
       .addField("Last message :", message.author.lastMessage)
-      .addField("Your Roles :", memberInfo.roles.map(role => role.name).join(", "))
+      .addField("Your Roles :", member.roles.map(role => role.name).join(", "))
       .setFooter("Your join date : ")
       .setTimestamp(message.member.joinedTimestamp)
 
