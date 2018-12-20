@@ -527,7 +527,7 @@ client.on('message', function(message) {
             .setThumbnail("https://cdn.discordapp.com/attachments/506530289053466625/525397273568608276/rJ_U2p_Pb.gif")
             .addField(`Information :`, `Level 100 "JeGey"\n **Max Level**\n **Types** : Lesbian | Normal\n **Nature** : Botch\n **HP**: 69 - IV: 1/69\n **Attack**: 0 - IV: 0/31\n **Defense**: 0 - IV: 0/31\n **Sp. Atk**: 0 - IV: 0/31\n **Sp. Def**: 0 - IV: 0/31\n **Speed**: 0 - IV: 0/31\n **Total IV** %: 0.69%`)
             .setImage("https://cdn.discordapp.com/avatars/267675263339462656/a_dff13b72d63d4896093af3d82dbc6f2d.gif?size=256&f=.gif")
-            .setColor(0xff4c4c)
+            .setColor(0x0aaa11)
         message.channel.send(Jennah)
     }
 }
