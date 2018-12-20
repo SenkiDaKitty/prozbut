@@ -505,5 +505,31 @@ if(!memberInfo){
       message.channel.send(userinfoo);
 }
 }
-});		        
+});
+client.on('message', function(message) {
+    if (message.author.equals(client.user)) return;
+    else {
+
+    var isInsulte = false;
+    var insulte = ['who is jenna'];
+    for (var i = 0; i < insulte.length; i++) {
+        if (message.content.toLowerCase().includes(insulte[i])) {
+            isInsulte = true;
+            break;
+        }
+    }
+
+    if (isInsulte) {
+        message.channel.send("A pokemon ! :")
+        var Jennah = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .setTitle("https://cdn.discordapp.com/avatars/511236101352980506/a_a1cc02d66893456fb415458433543888.gif?width=473&height=473","Professor Cray")
+            .setThumbnail("https://cdn.discordapp.com/attachments/506530289053466625/525397273568608276/rJ_U2p_Pb.gif")
+            .addField(`Information :`, `Level 100 "JeGey"\n **Max Level**\n **Types** : Lesbian | Normal\n **Nature** : Botch\n **HP**: 69 - IV: 1/69\n **Attack**: 0 - IV: 0/31\n **Defense**: 0 - IV: 0/31\n **Sp. Atk**: 0 - IV: 0/31\n **Sp. Def**: 0 - IV: 0/31\n **Speed**: 0 - IV: 0/31\n **Total IV** %: 0.69%`)
+            .setImage("https://cdn.discordapp.com/avatars/267675263339462656/a_dff13b72d63d4896093af3d82dbc6f2d.gif?size=256&f=.gif")
+            .setColor(0xff4c4c)
+        message.channel.send(Jennah)
+    }
+}
+});
 client.login(process.env.BOT_TOKEN);
