@@ -521,10 +521,10 @@ client.on('message', function(message) {
 
     if (isInsulte) {
         var Jennah = new Discord.RichEmbed()
-            .setAuthor(message.author.avatar)
+            .setAuthor(message.author.username, message.author.avatarURL)
             .setThumbnail("https://cdn.discordapp.com/attachments/506530289053466625/525397273568608276/rJ_U2p_Pb.gif")
             .addField(`Information :`, `Level 100 "JeGey"\n **Max Level**\n **Types** : Lesbian | Normal\n **Nature** : Botch\n **HP**: 69 - IV: 1/69\n **Attack**: 0 - IV: 0/31\n **Defense**: 0 - IV: 0/31\n **Sp. Atk**: 0 - IV: 0/31\n **Sp. Def**: 0 - IV: 0/31\n **Speed**: 0 - IV: 0/31\n **Total IV** %: 0.69%`)
-            .setImage("https://cdn.discordapp.com/avatars/267675263339462656/a_dff13b72d63d4896093af3d82dbc6f2d.gif?size=256&f=.gif")
+            .setImage("https://images-ext-1.discordapp.net/external/p7r4rM_7HP_wwTGLmtTAtApzZlxYSwIh2ElGuYih5VU/%3Fsize%3D256%26f%3D.gif/https/cdn.discordapp.com/avatars/267675263339462656/a_f72209dcc36364fdda84d2c8fee1a2b4.gif")
             .setColor(0x0aaa11)
         message.channel.send(Jennah)
     }
