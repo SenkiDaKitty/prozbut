@@ -6,6 +6,14 @@ var prefix = "P!";
 client.on('ready', async () => {
     console.log("ProZBot - The Proe Bot !");
 });
+client.on('message', async message => {
+    if (message.content.startsWith(prefix + "sinv")) {
+	    var InvEmbed = new Discord.RichEmbed()
+	    .setDescription("Here is the server invite link : http://discord.gg/9wdZh3G")
+	    .setColor("0x02e427")
+	   message.channel.sendEmbed(InvEmbed)
+	    }
+});
 client.on('message', function(message) {
     if (message.author.equals(client.user)) return;
 
