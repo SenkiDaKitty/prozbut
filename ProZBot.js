@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const botsettings = require("./botsettings.json");
 var client = new Discord.Client();
-var prefix = "P!";
+var prefix = "p!";
 
 client.on('ready', async () => {
     console.log("ProZBot - The Proe Bot !");
@@ -536,6 +536,28 @@ client.on('message', function(message) {
             .setColor(0x0aaa11)
         message.channel.send(Jennah)
     }
+}
+});
+client.on('message', message => {
+    var messageaides = message.content.substr(10);
+         if (message.content.startsWith(`${prefix}report`)) {
+        if(!messageaides){ return message.channel.send("Please, write a message to send to staff.")
+         } if(messageaides) {
+          var demande = new Discord.RichEmbed()
+                 .setAuthor(message.author.username, message.author.avatarURL)
+                 .addField(`There you go ${message.author} ! Your report have been sent to the staff ! : `,`${messageaides}`)
+                 .setColor("0x02e427")
+                 .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+         message.channel.send(demande);
+         var demandeS = new Discord.RichEmbed()
+                 .setAuthor(message.author.username, message.author.avatarURL)
+                 .setDescription(`Hello, you received a report of ${message.author.username}. The Report :`,`${messageaides}`)
+                 .setColor("0x02e427")
+                 .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+                 const reportlogs = message.guild.channels.find(channel => channel.name === "reportlogs");
+                 reportlogs.sendMessage(demandeS)
+       return
+   }
 }
 });
 client.login(process.env.BOT_TOKEN);
