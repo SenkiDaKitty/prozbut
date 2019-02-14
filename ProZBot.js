@@ -545,13 +545,13 @@ client.on('message', message => {
          } if(messageaides) {
           var demande = new Discord.RichEmbed()
                  .setAuthor(message.author.username, message.author.avatarURL)
-                 .addField(`There you go ${message.author} ! Your report have been sent to the staff ! : `,`${messageaides}`)
+                 .addField(`There you go ${message.author.tag} ! Your report have been sent to the staff ! : `,`${messageaides}`)
                  .setColor("0x02e427")
                  .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
          message.channel.send(demande);
          var demandeS = new Discord.RichEmbed()
                  .setAuthor(message.author.username, message.author.avatarURL)
-                 .setDescription(`Hello, you received a report of ${message.author.username}. The Report :`,`${messageaides}`)
+                 .setDescription(`Hello, you received a report of ${message.author.tag}. The Report :`, messageaides)
                  .setColor("0x02e427")
                  .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                  const reportlogs = message.guild.channels.find(channel => channel.name === "reportlogs");
