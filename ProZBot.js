@@ -539,6 +539,7 @@ client.on('message', function(message) {
 }
 });
 client.on('message', message => {
+	            var args = message.content.substring(prefix.length).split(" ");
             let messageaides = args.slice(1).join(" ");
          if (message.content.startsWith(`${prefix}report`)) {
         if(!messageaides){ return message.channel.send("Please, write a message to send to staff.")
