@@ -551,7 +551,7 @@ client.on('message', message => {
                  .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
          message.channel.send(demande);
          var demandeS = new Discord.RichEmbed()
-                 .setAuthor(message.author, message.author.avatarURL)
+                 .setAuthor(message.author.tag, message.author.avatarURL)
                  .setTitle("New Report !")
                  .addField(`Report : `,`${messageaides}`)
                  .setColor("0x02e427")
