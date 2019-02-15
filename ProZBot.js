@@ -551,9 +551,8 @@ client.on('message', message => {
                  .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
          message.channel.send(demande);
          var demandeS = new Discord.RichEmbed()
-                 .setAuthor(message.author.username, message.author.avatarURL)
-                 .addField(`Hello, you received a report of ${message.author.tag}. The Report :`)
-                 .addField(`${messageaides}`)
+                 .setAuthor(`New Report`,message.author, message.author.avatarURL)
+                 .addField(`Report : `,`${messageaides}`)
                  .setColor("0x02e427")
                  .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                  const reportlogs = message.guild.channels.find(channel => channel.name === "reportlogs");
