@@ -463,6 +463,7 @@ client.on('message', async message => {
                 return;
           	}
     	}   
+    }
 }
 });
     client.on('message', message => {
