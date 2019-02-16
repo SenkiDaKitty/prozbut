@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const botsettings = require("./botsettings.json");
+const ms = require("ms");
 var client = new Discord.Client();
 var prefix = "p!";
 
@@ -342,6 +343,17 @@ client.on('message', async message => {
             message.author.sendMessage(MuteInstructions)
                 return message.channel.send(MuteEmbed);
             } else {
+                var args = message.content.substring(prefix.length).split(" ");
+                let mutetime = args.slice(3).join(' ')
+                if(!mutetime) {
+                var timeerror = new Discord.RichEmbed()
+                .setTitle("Sanction >> Mute >> Time")
+                .setDescription("Put a time please ! ( format : s,m,h )")
+                .setColor("0xff4c4c")
+                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+                message.channel.send(timeerror);
+                return;
+                } else {
                let role = message.guild.roles.find(r => r.name === "❌ MutedProZ ❌");
                 if (!role) {
                     try {
@@ -368,18 +380,26 @@ client.on('message', async message => {
                 let mutereason = args.slice(2).join(' ')
                 var MuteEmbed = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
-                .addField(`Penalty applied !`,`User ${message.mentions.users.first()} has been muted by ${message.author.tag}, Reason : ${mutereason}`)
+                .addField(`Penalty applied !`,`User ${message.mentions.users.first()} has been muted by ${message.author.tag} for ${ms(ms(mutetime))}, Reason : ${mutereason}`)
                 .setColor("0x02e427")
       		.setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                 message.delete()
                 message.channel.send(MuteEmbed); 
                 var MuteLogEmbed = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
-                .addField(`Penalty applied ( Mute ) !`,`User ${message.mentions.users.first()} has been muted by ${message.author.tag}, Reason : ${mutereason}`)
+                .addField(`Penalty applied ( Mute ) !`,`User ${message.mentions.users.first()} has been muted by ${message.author.tag} for ${ms(ms(mutetime))}, Reason : ${mutereason}`)
                 .setColor("0x02e427")
     		.setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                 const logs = message.guild.channels.find(channel => channel.name === "logs");
                 logs.sendMessage(MuteLogEmbed)
+		setTimeout(function(){
+                    memberToMute.removeRole(role);
+                    message.channel.send(`<@${memberToMute.id}>'s mute expired !`);
+                  }, ms(mutetime));
+                return;
+            }
+        }
+    }
                 return;
             }
         }
@@ -410,7 +430,7 @@ client.on('message', async message => {
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setTitle("Sanctions >> Unmute >> User")
                 .setColor("0xff4c4c")
-    .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
+                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
                 message.delete()
 	var UnmuteInstructions = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
