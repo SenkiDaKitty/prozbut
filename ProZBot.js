@@ -400,10 +400,7 @@ client.on('message', async message => {
             }
         }
     }
-                return;
-            }
-        }
-    }
+
     if (message.content.startsWith(`${prefix}unmute`)) {
         if (!message.member.permissions.has('MANAGE_MESSAGES')) {
             var UnMuteEmbed = new Discord.RichEmbed()
