@@ -590,17 +590,13 @@ client.on('message', message => {
             .addField(`⚔️ | Moderation :`,`[P!ban (@Ping + Reason)](https://discord.gg/2kfPk9P) | Ban a player. \n \n [P!mute (@Ping + Reason + Time)](https://discord.gg/2kfPk9P) | Removing the permission from the player needed to talk. \n \n [P!unmute (@Mention)](https://discord.gg/2kfPk9P) | Giving this permission back.`)
             .addField(`❓ | Informations :`,`[P!sinfo](https://discord.gg/2kfPk9P) | Getting information of this server. \n \n [P!info](https://discord.gg/2kfPk9P) | Getting informations about yourself ( logic ). \n \n [P!info (@PingHere)](https://discord.gg/2kfPk9P) | Getting information about a person. \n \n [P!ping](https://discord.gg/2kfPk9P) | Getting bot's latency. \n \n [P!list](https://discord.gg/2kfPk9P) | You can see where i am, cool no ?.`)
             .addField(`🎲 | Divers :`,`[P!say (Message)](https://discord.gg/2kfPk9P) | Say command ( don't abuse it )`)
-            .addField(`📞 | Contact`,`[P!contact (Message)](https://discord.gg/2kfPk9P) | Une fois cette commande effectuée, le bot transmettra votre demande vers mon e-mail. Ca peut être une demande comme un bug`)
+            .addField(`📞 | Contact`,`[P!report (Message)](https://discord.gg/2kfPk9P) | Reporting a player that either broke rules, insulted, abused, annoyed.`)
             .setColor(0xff4c4c);
             message.channel.send(Help)
     }
 });
 client.on('message', message => {
     if (message.content.startsWith(prefix + "staff")) {
-        
-let helperID = "546629854183948298";
-
-let hmembers = message.guild.roles.get(helperID).members;
 
 let adminID = "546628915238535168";
 
