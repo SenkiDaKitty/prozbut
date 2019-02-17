@@ -400,6 +400,7 @@ client.on('message', async message => {
             }
         }
     }
+}
 
     if (message.content.startsWith(`${prefix}unmute`)) {
         if (!message.member.permissions.has('MANAGE_MESSAGES')) {
@@ -464,7 +465,6 @@ client.on('message', async message => {
           	}
     	}   
     }
-}
 });
     client.on('message', message => {
      if (message.isMentioned(client.user)) {
