@@ -585,12 +585,12 @@ client.on('message', message => {
         var Help = new Discord.RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setThumbnail("https://cdn.discordapp.com/attachments/516196743780630550/523248941282623498/logo.png")
-            .setTitle(`Voici mes commandes :`)
+            .setTitle(`👑 All my commands 👑`)
             .addField(`🌟 | Administration :`,`[P!setgame](https://discord.gg/2kfPk9P) \n \n [P!Leave](https://discord.gg/2kfPk9P)`)
             .addField(`⚔️ | Modération :`,`[P!ban (@Ping + Reason)](https://discord.gg/2kfPk9P) | Ban a player. \n \n [P!mute (@Ping + Reason + Time)](https://discord.gg/2kfPk9P) | Removing the permission from the player needed to talk. \n \n [P!unmute (@Mention)](https://discord.gg/2kfPk9P) | Giving this permission back.`)
             .addField(`❓ | Informations :`,`[P!sinfo](https://discord.gg/2kfPk9P) | Getting information of this server. \n \n [P!info](https://discord.gg/2kfPk9P) | Getting informations about yourself ( logic ). \n \n [P!info (@PingHere)](https://discord.gg/2kfPk9P) | Getting information about a person. \n \n [P!ping](https://discord.gg/2kfPk9P) | Getting bot's latency. \n \n [P!list](https://discord.gg/2kfPk9P) | You can see where i am, cool no ?.`)
             .addField(`🎲 | Divers :`,`[P!say (Message)](https://discord.gg/2kfPk9P) | Say command ( don't abuse it )`)
-            .addField(`📞 | Contact`,`[P!contact (Message)](https://discord.gg/2kfPk9P) | Une fois cette commande effectuée, le bot transmettra votre demande vers mon e-mail. Ca peut être une demande comme un bug`)
+            .addField(`📞 | Contact`,`[P!contact (Message)](https://discord.gg/2kfPk9P) | Reporting a player that either annoyed, insulted, abused or broke rules.`)
             .setColor(0xff4c4c);
             message.channel.send(Help)
     }
