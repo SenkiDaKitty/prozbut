@@ -596,11 +596,7 @@ client.on('message', message => {
     }
 });
 client.on('message', message => {
-    if (message.content.startsWith(prefix + "staff")) {
-
-let adminID = "546628915238535168";
-
-let amembers = message.guild.roles.get(adminID).members;
+    if (message.content.startsWith(prefix + "mod")) {
 
 let roleID = "546627458791899146";
 
@@ -614,11 +610,7 @@ let botembed = new Discord.RichEmbed()
 
 .setColor("RANDOM")
 
-.addField("Administrators :", amembers.map(member => member.user.tag))
-
 .addField("Moderators :", members.map(member => member.user.tag))
-
-.addField("Helpers :", hmembers.map(member => member.user.tag));
 
 return message.channel.send(botembed);
     }
