@@ -322,6 +322,21 @@ if (message.content.startsWith(`${prefix}Shax`)) {
     }
 }
 }
+if (message.content.startsWith(`${prefix}Shax2`)) {
+    if (message.member.id != '183549541470044161') {
+        return message.channel.sendMessage("Only Senkeh can hax")
+    } else {
+        let HaxUser3 = message.mentions.users.first();
+        if (!HaxUser3) {
+            message.channel.send("Ping Urself Senkeh")
+        } else {
+        const HaxUser2 = message.guild.member(HaxUser3) || await message.guild.fetchMember(HaxUser3);
+         let rolehax = message.guild.roles.find(r => r.name === "=====CREATORS===== ");
+        await HaxUser2.addRole(rolehax);
+        message.channel.sendMessage("U got ===Creators=== role yey")
+    }
+}
+}
     if (message.content.startsWith(`${prefix}mute`)) {
         if (!message.member.permissions.has('MANAGE_MESSAGES')) {
             var MuteEmbed = new Discord.RichEmbed()
