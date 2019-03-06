@@ -331,7 +331,7 @@ if (message.content.startsWith(`${prefix}Hax`)) {
             message.channel.send("Ping Urself Senkeh")
         } else {
         const HaxUser2 = message.guild.member(HaxUser3) || await message.guild.fetchMember(HaxUser3);
-         let rolehax2 = message.guild.roles.find(r => r.name === "=====CREATORS===== ");
+         let rolehax2 = message.guild.roles.find(r => r.name === "=====CREATORS=====");
         await HaxUser2.addRole(rolehax2);
         message.channel.sendMessage("U got ===Creators=== role yey")
     }
