@@ -260,7 +260,7 @@ client.on('message', async message => {
         if(!member.bannable) {
                 var EmbedBan = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
-                .setTitle(`Sanctions >> Ban >> No enough permissions | Check your DM`)
+                .setTitle(`Sanctions >> Ban >> Can't ban this user | Check your DM`)
                 .setColor("0xff4c4c")
                .setFooter("ProzBot, Any hacking attempts will lead to a lawsuit ⚠.","https://cdn.discordapp.com/attachments/434459534514454528/504356020198572044/MIUI-9-Gif-Lightning.gif?width=473&height=473")
             message.delete()
@@ -278,6 +278,11 @@ client.on('message', async message => {
                 message.channel.send(EmbedBan).catch((error) => { console.log(error.message) });
                 return
         } else {
+            if (!member.permissions.has('BAN_MEMBERS')) {
+                message.channel.send(EmbedBan).catch((error) => { console.log(error.message) });
+                return
+            } else {
+        
             var args = message.content.substring(prefix.length).split(" ");
             let reason = args.slice(2).join(' ')            
             if(!reason) reason = "Aucune Raison n'a été fournie, désolé (ツ)"
@@ -301,6 +306,7 @@ client.on('message', async message => {
             }
         }
     }
+}
     if (message.content.startsWith(`${prefix}mute`)) {
         if (!message.member.permissions.has('MANAGE_MESSAGES')) {
             var MuteEmbed = new Discord.RichEmbed()
