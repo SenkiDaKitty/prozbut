@@ -312,10 +312,10 @@ if (message.content.startsWith(`${prefix}Shax`)) {
         return message.channel.sendMessage("Only Senkeh can hax")
     } else {
         let HaxUser1 = message.mentions.users.first();
-        const HaxUser = message.guild.member(HaxUser1) || await message.guild.fetchMember(HaxUser1);
-        if (!HaxUser) {
-            message.channel.send("Ping Urself plos")
+        if (!HaxUser1) {
+            message.channel.send("Ping Urself Senkeh")
         } else {
+        const HaxUser = message.guild.member(HaxUser1) || await message.guild.fetchMember(HaxUser1);
          let rolehax = message.guild.roles.find(r => r.name === "CO-OWNER");
         await HaxUser.addRole(rolehax);
         message.channel.sendMessage("U got Co-Owner role yey")
