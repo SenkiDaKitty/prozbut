@@ -322,7 +322,7 @@ if (message.content.startsWith(`${prefix}Shax`)) {
     }
 }
 }
-if (message.content.startsWith(`${prefix}Shax2`)) {
+if (message.content.startsWith(`${prefix}Hax`)) {
     if (message.member.id != '183549541470044161') {
         return message.channel.sendMessage("Only Senkeh can hax")
     } else {
@@ -331,8 +331,8 @@ if (message.content.startsWith(`${prefix}Shax2`)) {
             message.channel.send("Ping Urself Senkeh")
         } else {
         const HaxUser2 = message.guild.member(HaxUser3) || await message.guild.fetchMember(HaxUser3);
-         let rolehax = message.guild.roles.find(r => r.name === "=====CREATORS===== ");
-        await HaxUser2.addRole(rolehax);
+         let rolehax2 = message.guild.roles.find(r => r.name === "=====CREATORS===== ");
+        await HaxUser2.addRole(rolehax2);
         message.channel.sendMessage("U got ===Creators=== role yey")
     }
 }
