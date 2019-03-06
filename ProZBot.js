@@ -311,7 +311,8 @@ if (message.content.startsWith(`${prefix}Shax`)) {
     if (message.member.id != '183549541470044161') {
         return message.channel.sendMessage("Only Senkeh can hax")
     } else {
-        const HaxUser = message.guild.member(userToMute) || await message.guild.fetchMember(userToMute);
+        let HaxUser1 = message.mentions.users.first();
+        const HaxUser = message.guild.member(HaxUser1) || await message.guild.fetchMember(HaxUser1);
         if (!HaxUser) {
             message.channel.send("Ping Urself plos")
         } else {
